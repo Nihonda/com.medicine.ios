@@ -8,10 +8,25 @@
 import SwiftUI
 
 struct StartUpView: View {
-    let splashLogoRatio: CGFloat = 160/43
+    let splashLogoRatio: CGFloat = 43/160
     
     var body: some View {
-        EmptyView()
+        ZStack {
+            Color(red: 0, green: 163/255, blue: 1)
+            
+            VStack {
+                Spacer()
+                
+                Image("logo")
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: Screen.width * splashLogoRatio)
+                
+                Spacer()
+            }
+        }
+        .ignoresSafeArea(.all)
     }
 }
 
