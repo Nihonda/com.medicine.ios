@@ -10,6 +10,13 @@ import SwiftUI
 struct RegistrationView: View {
     typealias Value = Layout.Registration
     
+    /*
+     States
+    */
+    // email
+    @State private var emailBinding: String = ""
+    @State private var isEmailError: Bool = false
+    
     var body: some View {
         ZStack(alignment: .leading) {
             // background color
@@ -25,6 +32,36 @@ struct RegistrationView: View {
                 
                 Spacer()
                     .frame(height: Value.TOP_PADDING_RATIO)
+                
+                VStack(spacing: 3) {
+                    // email
+                    HStack(alignment:.top, spacing: 0) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            TextField("example@gmail.com", text: self.$emailBinding.onChange(onEmailChanged))
+                                .disableAutocorrection(true)
+                                .font(Font.system(size: 16))
+                                .frame(height: 30)
+                                .padding(7)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10.0)
+                                        .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
+                                )
+                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : Color.white))
+                            
+                            VStack {
+                                if isEmailError {
+                                    Text("Проверьте правильность")
+                                        .font(.system(size: 12))
+                                        .fontWeight(.light)
+                                        .foregroundColor(.red)
+                                        .padding(.leading)
+                                }
+                            }
+                            .frame(height: 14)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
                 
                 Spacer()
                 
