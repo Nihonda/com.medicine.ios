@@ -2,7 +2,7 @@
 //  OpenMedicineApp.swift
 //  OpenMedicine
 //
-//  Created by Apple on 17/8/21.
+//  Created by Nurlan Nihonda on 17/8/21.
 //
 
 import SwiftUI
