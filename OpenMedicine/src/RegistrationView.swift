@@ -102,6 +102,7 @@ struct RegistrationView: View {
                                 .font(Font.system(size: 16))
                                 .frame(height: 30)
                                 .padding(7)
+                                .modifier(TextFieldArrowDown())
                                 .overlay(
                                     VStack {
                                         RoundedRectangle(cornerRadius: 10.0)
