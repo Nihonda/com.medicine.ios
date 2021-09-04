@@ -68,7 +68,7 @@ struct RegistrationView: View {
                                     RoundedRectangle(cornerRadius: 10.0)
                                         .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
                                 )
-                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isEmailFocused ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
+                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isEmailFocused || !emailBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
                             
                             VStack {
                                 if isEmailError {
@@ -98,6 +98,7 @@ struct RegistrationView: View {
                                 }
                             })
                                 .disableAutocorrection(true)
+                                .disabled(true)
                                 .font(Font.system(size: 16))
                                 .frame(height: 30)
                                 .padding(7)
@@ -107,7 +108,7 @@ struct RegistrationView: View {
                                             .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
                                     }
                                 )
-                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isGenderFocused ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
+                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isGenderFocused || !genderBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
                             
                             VStack {
                                 if isGenderError {
