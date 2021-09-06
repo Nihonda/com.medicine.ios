@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12C26E66E340024B7CE /* CoateData.swift */; };
+		18AEC12F26E66FEA0024B7CE /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12E26E66FEA0024B7CE /* K.swift */; };
 		18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */; };
 		18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6C26CC09190012C3A1 /* ContentView.swift */; };
 		18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D99F6E26CC091A0012C3A1 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		18AEC12C26E66E340024B7CE /* CoateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateData.swift; sourceTree = "<group>"; };
+		18AEC12E26E66FEA0024B7CE /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		18D99F6726CC09190012C3A1 /* OpenMedicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMedicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMedicineApp.swift; sourceTree = "<group>"; };
 		18D99F6C26CC09190012C3A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				18DEF75926D3F88400BA42F4 /* StartUpView.swift */,
 				18DEF75F26D4067D00BA42F4 /* Layout.swift */,
 				18DEF75B26D3F9B900BA42F4 /* Screen.swift */,
+				18AEC12E26E66FEA0024B7CE /* K.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */,
+				18AEC12F26E66FEA0024B7CE /* K.swift in Sources */,
 				18DEF75A26D3F88400BA42F4 /* StartUpView.swift in Sources */,
 				18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */,
 				18DEF75C26D3F9B900BA42F4 /* Screen.swift in Sources */,
