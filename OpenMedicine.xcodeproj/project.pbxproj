@@ -60,6 +60,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		18AEC13226E67BAA0024B7CE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18AEC13026E672260024B7CE /* CoateCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		18D99F5E26CC09190012C3A1 = {
 			isa = PBXGroup;
 			children = (
@@ -108,12 +116,12 @@
 		18DEF75826D3F80800BA42F4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				18AEC13226E67BAA0024B7CE /* Cell */,
 				18AEC12B26E66E0E0024B7CE /* Model */,
 				18F81F8D26E401490095A671 /* Modifiers */,
 				18DEF76126D4156E00BA42F4 /* Extentions */,
 				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 				18DEF75926D3F88400BA42F4 /* StartUpView.swift */,
-				18AEC13026E672260024B7CE /* CoateCell.swift */,
 				18DEF75F26D4067D00BA42F4 /* Layout.swift */,
 				18DEF75B26D3F9B900BA42F4 /* Screen.swift */,
 				18AEC12E26E66FEA0024B7CE /* K.swift */,
