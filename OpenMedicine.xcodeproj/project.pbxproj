@@ -17,7 +17,7 @@
 		18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */; };
 		18DEF76026D4067D00BA42F4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75F26D4067D00BA42F4 /* Layout.swift */; };
 		18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF76226D415C500BA42F4 /* Binding+Extension.swift */; };
-		18F81F8F26E401CF0095A671 /* TextFieldArrowDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F81F8E26E401CF0095A671 /* TextFieldArrowDown.swift */; };
+		18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		18DEF75F26D4067D00BA42F4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		18DEF76226D415C500BA42F4 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
-		18F81F8E26E401CF0095A671 /* TextFieldArrowDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldArrowDown.swift; sourceTree = "<group>"; };
+		18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldArrow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 		18F81F8D26E401490095A671 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				18F81F8E26E401CF0095A671 /* TextFieldArrowDown.swift */,
+				18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */,
 			);
 			name = Modifiers;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 				18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */,
 				18DEF76026D4067D00BA42F4 /* Layout.swift in Sources */,
 				18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */,
-				18F81F8F26E401CF0095A671 /* TextFieldArrowDown.swift in Sources */,
+				18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

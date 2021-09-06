@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct TextFieldArrowDown: ViewModifier
+struct TextFieldArrow: ViewModifier
 {
+    @State var systemName: String
+    
     public func body(content: Content) -> some View
     {
         ZStack(alignment: .trailing)
         {
             content
 
-            Image(systemName: "chevron.down")
+            Image(systemName: systemName)
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(Color(UIColor.opaqueSeparator))
                 .padding(.trailing, 8)
