@@ -11,6 +11,7 @@
 		18AEC12F26E66FEA0024B7CE /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12E26E66FEA0024B7CE /* K.swift */; };
 		18AEC13126E672260024B7CE /* CoateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13026E672260024B7CE /* CoateCell.swift */; };
 		18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13326E67BF00024B7CE /* CoateView.swift */; };
+		18AEC13726E67E060024B7CE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13626E67E060024B7CE /* Api.swift */; };
 		18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */; };
 		18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6C26CC09190012C3A1 /* ContentView.swift */; };
 		18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D99F6E26CC091A0012C3A1 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		18AEC12E26E66FEA0024B7CE /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		18AEC13026E672260024B7CE /* CoateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateCell.swift; sourceTree = "<group>"; };
 		18AEC13326E67BF00024B7CE /* CoateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateView.swift; sourceTree = "<group>"; };
+		18AEC13626E67E060024B7CE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		18D99F6726CC09190012C3A1 /* OpenMedicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMedicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMedicineApp.swift; sourceTree = "<group>"; };
 		18D99F6C26CC09190012C3A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 				18AEC13026E672260024B7CE /* CoateCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		18AEC13526E67DF20024B7CE /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				18AEC13626E67E060024B7CE /* Api.swift */,
+			);
+			name = Api;
 			sourceTree = "<group>";
 		};
 		18D99F5E26CC09190012C3A1 = {
@@ -118,6 +128,7 @@
 		18DEF75826D3F80800BA42F4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				18AEC13526E67DF20024B7CE /* Api */,
 				18AEC13226E67BAA0024B7CE /* Cell */,
 				18AEC12B26E66E0E0024B7CE /* Model */,
 				18F81F8D26E401490095A671 /* Modifiers */,
@@ -225,6 +236,7 @@
 				18DEF75A26D3F88400BA42F4 /* StartUpView.swift in Sources */,
 				18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */,
 				18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */,
+				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
 				18DEF75C26D3F9B900BA42F4 /* Screen.swift in Sources */,
 				18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */,
 				18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */,
