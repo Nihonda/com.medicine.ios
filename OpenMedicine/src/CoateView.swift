@@ -13,9 +13,12 @@ struct CoateView: View {
     var body: some View {
         VStack {
             if let coate = self.coate.data.data {
-                OutlineGroup(coate, children: \.child) {item in
-                    CoateCell(item: item)
+                List{
+                    OutlineGroup(coate, children: \.child) { item in
+                        CoateCell(item: item)
+                    }
                 }
+                .listStyle(PlainListStyle())
             }
             
             Spacer()
