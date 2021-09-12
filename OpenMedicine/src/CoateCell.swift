@@ -11,26 +11,20 @@ struct CoateCell: View {
     var item: CoateItem
     
     var body: some View {
-        VStack {
-            HStack(spacing: 15) {
-                Image(systemName: item.selected == true ? "checkmark.circle.fill" : "checkmark.circle")
-                    .resizable()
-                    .renderingMode(.original)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 30, alignment: .center)
-                    .onTapGesture {
-                        
-                    }
-                
-                Text(item.nm)
-                    .font(Font.system(size: 14))
-                
-                Spacer()
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
+        HStack(spacing: 15) {
+            Image(systemName: item.selected == true ? "checkmark.circle.fill" : "checkmark.circle")
+                .resizable()
+                .renderingMode(.original)
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 30, alignment: .center)
+                .onTapGesture {
+                    
+                }
             
-            Divider()
+            Text(item.nm)
+                .font(Font.system(size: 14))
+            
+            Spacer()
         }
     }
 }
