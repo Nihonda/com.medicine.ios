@@ -20,4 +20,8 @@ class K {
     class API {
         static let COATE_API = K.HOST_API + "/api/v1/region-list"
     }
+    
+    class Source {
+        static let COATE            = "coate.json"
+    }
 }
