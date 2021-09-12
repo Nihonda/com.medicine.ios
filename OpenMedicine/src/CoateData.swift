@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CoateData: Codable {
-    var data: CoateItem
+    var data: CoateItem?
 }
 
 class CoateItem: Codable, Identifiable {
