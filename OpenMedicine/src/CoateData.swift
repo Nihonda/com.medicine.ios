@@ -22,10 +22,10 @@ class CoateItem: Codable, Identifiable {
     let capital_code: String?
     let child: [CoateItem]?
     
-    var selected: Bool
-    var level: Int
+    var selected: Bool?
+    var level: Int?
     
-    init(cd: Int, nm: String, code: String, capital_name: String?, capital_code: String?, child: [CoateItem]?, selected: Bool, level: Int) {
+    init(cd: Int, nm: String, code: String, capital_name: String?, capital_code: String?, child: [CoateItem]?, selected: Bool?, level: Int?) {
         self.cd = cd
         self.nm = nm
         self.code = code

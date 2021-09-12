@@ -13,7 +13,7 @@ struct CoateCell: View {
     var body: some View {
         VStack {
             HStack(spacing: 15) {
-                Image(systemName: item.selected ? "checkmark.circle.fill" : "checkmark.circle")
+                Image(systemName: item.selected == true ? "checkmark.circle.fill" : "checkmark.circle")
                     .resizable()
                     .renderingMode(.original)
                     .aspectRatio(contentMode: .fit)
