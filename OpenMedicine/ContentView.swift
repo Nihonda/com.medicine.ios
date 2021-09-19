@@ -36,7 +36,7 @@ struct ContentView: View {
             } else {
                 self.fetchCoate()
             }
-        }
+        }.preferredColorScheme(.light)
         
     }
 }
