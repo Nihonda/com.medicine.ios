@@ -67,166 +67,27 @@ struct RegistrationView: View {
                 Spacer()
                     .frame(height: Value.TOP_PADDING_RATIO)
                 
-                VStack(spacing: 3) {
+                VStack(spacing: 0) {
                     // email
-                    HStack(alignment:.top, spacing: 0) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            TextField("Электронная почта", text: self.$emailBinding.onChange(onEmailChanged), onEditingChanged: { editingChanged in
-                                isEmailFocused = editingChanged
-                                if editingChanged {
-                                    // focused
-                                    
-                                } else {
-                                    // focus lost
-                                    
-                                }
-                            })
-                                .disableAutocorrection(true)
-                                .font(Font.system(size: 16))
-                                .frame(height: 30)
-                                .padding(7)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10.0)
-                                        .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                )
-                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isEmailFocused || !emailBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                            
-                            VStack {
-                                if isEmailError {
-                                    Text("Проверьте правильность")
-                                        .font(.system(size: 12))
-                                        .fontWeight(.light)
-                                        .foregroundColor(.red)
-                                        .padding(.leading)
-                                }
-                            }
-                            .frame(height: 14)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
+                    TextFieldView(placeholder: "Электронная почта", bindingText: $emailBinding, errorMessage: "Почта введена не правильно")
                     
                     // gender
-                    HStack(alignment:.top, spacing: 0) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            TextField("Пол", text: self.$genderBinding.onChange(onGenderChanged), onEditingChanged: { editingChanged in
-                                if editingChanged {
-                                    // focused
-                                    
-                                } else {
-                                    // focus lost
-                                    
-                                }
-                            })
-                                .disableAutocorrection(true)
-                                .disabled(true)
-                                .font(Font.system(size: 16))
-                                .frame(height: 30)
-                                .padding(7)
-                                .modifier(TextFieldArrow(systemName: "chevron.down"))
-                                .overlay(
-                                    VStack {
-                                        RoundedRectangle(cornerRadius: 10.0)
-                                            .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                    }
-                                )
-                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : !genderBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                            
-                            VStack {
-                                if isGenderError {
-                                    Text("Выберите пол")
-                                        .font(.system(size: 12))
-                                        .fontWeight(.light)
-                                        .foregroundColor(.red)
-                                        .padding(.leading)
-                                }
-                            }
-                            .frame(height: 14)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
+                    TextFieldView(placeholder: "Пол", bindingText: $genderBinding, errorMessage: "Выберите пол", chevronName: "chevron.down")
                     .onTapGesture {
                         self.showGenderPicker = true
                     }
                     
                     // date of birth
-                    HStack(alignment:.top, spacing: 0) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            TextField("Дата рождения", text: self.$birthdayBinding.onChange(onBirthdayChanged), onEditingChanged: { editingChanged in
-                                if editingChanged {
-                                    // focused
-                                    
-                                } else {
-                                    // focus lost
-                                    
-                                }
-                            })
-                                .disableAutocorrection(true)
-                                .disabled(true)
-                                .font(Font.system(size: 16))
-                                .frame(height: 30)
-                                .padding(7)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10.0)
-                                        .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                )
-                                .background(RoundedRectangle(cornerRadius: 10.0).fill(isBirthdayError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : !birthdayBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                            
-                            VStack {
-                                if isBirthdayError {
-                                    Text("Проверьте правильность")
-                                        .font(.system(size: 12))
-                                        .fontWeight(.light)
-                                        .foregroundColor(.red)
-                                        .padding(.leading)
-                                }
-                            }
-                            .frame(height: 14)
-                        }
-                        .onTapGesture {
-                            self.showBirthdayPicker = true
-                        }
+                    TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, errorMessage: "Выберите дату рождения", chevronName: "chevron.down")
+                    .onTapGesture {
+                        self.showBirthdayPicker = true
                     }
-                    .frame(maxWidth: .infinity)
                     
                     // region
-                    HStack(alignment:.top, spacing: 0) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            NavigationLink(destination: CoateView()) {
-                                TextField("Область", text: self.$regionBinding.onChange(onRegionChanged), onEditingChanged: { editingChanged in
-                                    if editingChanged {
-                                        // focused
-
-                                    } else {
-                                        // focus lost
-
-                                    }
-                                })
-                                    .disableAutocorrection(true)
-                                    .disabled(true)
-                                    .font(Font.system(size: 16))
-                                    .frame(height: 30)
-                                    .padding(7)
-                                    .modifier(TextFieldArrow(systemName: "chevron.right"))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10.0)
-                                            .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                    )
-                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(isRegionError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : !regionBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                            }
-
-                            VStack {
-                                if isRegionError {
-                                    Text("Проверьте правильность")
-                                        .font(.system(size: 12))
-                                        .fontWeight(.light)
-                                        .foregroundColor(.red)
-                                        .padding(.leading)
-                                }
-                            }
-                            .frame(height: 14)
-                        }
+                    NavigationLink(destination: CoateView()) {
+                        TextFieldView(placeholder: "Область", bindingText: $regionBinding, errorMessage: "Выберите область", chevronName: "chevron.right")
+                            .multilineTextAlignment(.leading)
                     }
-                    .frame(maxWidth: .infinity)
                 }
                 
                 Spacer()
@@ -336,6 +197,69 @@ extension RegistrationView {
     }
     
     private func onRegionChanged(_ text: String) {
+        
+    }
+}
+
+struct TextFieldView:  View {
+    var placeholder: String
+    @Binding var bindingText: String
+    var errorMessage: String
+    var chevronName: String = ""
+//    let onChangeHandler: (String) -> ()
+    
+    @State var isError: Bool = false
+    @State var isFocused: Bool = false
+
+    var body: some View {
+        HStack(alignment:.top, spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                if chevronName.isEmpty {
+                    innerTextField()
+                } else {
+                    innerTextField()
+                        .disabled(true)
+                        .modifier(TextFieldArrow(systemName: chevronName))
+                }
+
+                VStack {
+                    if isError {
+                        Text(errorMessage)
+                            .font(.system(size: 12))
+                            .fontWeight(.light)
+                            .foregroundColor(.red)
+                            .padding(.leading)
+                    }
+                }
+                .frame(height: 14)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    private func innerTextField() -> some View {
+        return TextField(placeholder, text: self.$bindingText.onChange(onFieldChanged), onEditingChanged: { editingChanged in
+            isFocused = editingChanged
+            if editingChanged {
+                // focused
+                
+            } else {
+                // focus lost
+                
+            }
+        })
+            .disableAutocorrection(true)
+            .font(Font.system(size: 16))
+            .frame(height: 30)
+            .padding(7)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10.0)
+                    .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
+            )
+            .background(RoundedRectangle(cornerRadius: 10.0).fill(isError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isFocused || !bindingText.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
+    }
+    
+    private func onFieldChanged(_ text: String) {
         
     }
 }
