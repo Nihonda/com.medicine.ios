@@ -64,20 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		187AAAD226EE3E3B00ABDFAF /* ViewModel */ = {
+		187AAAD226EE3E3B00ABDFAF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */,
 			);
-			name = ViewModel;
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
-		18AEC12B26E66E0E0024B7CE /* Model */ = {
+		18AEC12B26E66E0E0024B7CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				18AEC12C26E66E340024B7CE /* CoateData.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		18AEC13226E67BAA0024B7CE /* Cell */ = {
@@ -95,6 +95,14 @@
 				187AAAD026EE3C1D00ABDFAF /* Files.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		18D57FEA271865DD005C162D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18AEC13326E67BF00024B7CE /* CoateView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		18D99F5E26CC09190012C3A1 = {
@@ -145,13 +153,13 @@
 		18DEF75826D3F80800BA42F4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				18AEC12B26E66E0E0024B7CE /* Models */,
+				187AAAD226EE3E3B00ABDFAF /* ViewModels */,
+				18D57FEA271865DD005C162D /* Views */,
 				18AEC13526E67DF20024B7CE /* Helper */,
 				18AEC13226E67BAA0024B7CE /* Cell */,
-				18AEC12B26E66E0E0024B7CE /* Model */,
-				187AAAD226EE3E3B00ABDFAF /* ViewModel */,
 				18F81F8D26E401490095A671 /* Modifiers */,
 				18DEF76126D4156E00BA42F4 /* Extentions */,
-				18AEC13326E67BF00024B7CE /* CoateView.swift */,
 				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 				18DEF75926D3F88400BA42F4 /* StartUpView.swift */,
 				18DEF75F26D4067D00BA42F4 /* Layout.swift */,
