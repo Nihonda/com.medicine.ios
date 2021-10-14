@@ -54,7 +54,7 @@ struct RegistrationView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             // background color
-            Color(red: 0.97, green: 0.98, blue: 1)
+            Color(red: 0.81, green: 0.81, blue: 0.81)
                 .edgesIgnoringSafeArea(.all)
 
             VStack(alignment: .leading, spacing: Value.FIELDS_PADDING) {
@@ -91,6 +91,27 @@ struct RegistrationView: View {
                 }
                 
                 Spacer()
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        
+                    }) {
+                        Text("Зарегистрироваться".uppercased())
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .padding(.horizontal, 20)
+                            .foregroundColor(Color.white)
+                            .background(Color(red: 0, green: 163/255, blue: 1))
+                            .cornerRadius(10)
+                    }
+                    Spacer()
+                }
+
+                Spacer()
+
                 
             }
             .padding(.horizontal, Value.HORIZONTAL_PADDING)
