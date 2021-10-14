@@ -16,28 +16,28 @@ struct ContentView: View {
     let code = "41700000000000" // Kyrgyzstan all data
     
     var body: some View {
-        ZStack {
-            if isActive {
-                RegistrationView()
-                    .environmentObject(coate)
-            } else {
-                StartUpView()
-            }
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation {
-                    self.isActive = true
+        NavigationView {
+            ZStack {
+                if isActive {
+                    RegistrationView()
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
+                } else {
+                    StartUpView()
                 }
             }
-            
-            if Files.shared.exists(K.Source.COATE) {
-                self.coate.data.data = self.readCoate()?.data
-            } else {
-                self.fetchCoate()
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                     self.isActive = true
+                }
+                
+                if Files.shared.exists(K.Source.COATE) {
+                    self.coate.data.data = self.readCoate()?.data
+                } else {
+                    self.fetchCoate()
+                }
             }
         }
-        
+        .environmentObject(coate)
     }
 }
 
