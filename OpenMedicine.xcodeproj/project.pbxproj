@@ -101,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				18AEC13326E67BF00024B7CE /* CoateView.swift */,
+				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -160,7 +161,6 @@
 				18AEC13226E67BAA0024B7CE /* Cell */,
 				18F81F8D26E401490095A671 /* Modifiers */,
 				18DEF76126D4156E00BA42F4 /* Extentions */,
-				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 				18DEF75926D3F88400BA42F4 /* StartUpView.swift */,
 				18DEF75F26D4067D00BA42F4 /* Layout.swift */,
 				18DEF75B26D3F9B900BA42F4 /* Screen.swift */,
