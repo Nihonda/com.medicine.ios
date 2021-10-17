@@ -54,8 +54,6 @@ struct RegistrationView: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            // background color
-//            Color(red: 0.81, green: 0.81, blue: 0.81)
             Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
 
@@ -65,7 +63,6 @@ struct RegistrationView: View {
                 
                 Text("Регистрация")
                     .font(.largeTitle)
-//                    .font(.system(size: 36))
                 
                 Spacer()
                     .frame(height: Value.TOP_PADDING_RATIO)
@@ -119,6 +116,7 @@ struct RegistrationView: View {
                 
                 Spacer()
                 
+                // MARK: REGISTER BUTTON
                 HStack {
                     Spacer()
                     Button(action: {
@@ -139,81 +137,88 @@ struct RegistrationView: View {
 
                 Spacer()
 
-            /*
-             * Picker section
-             */
+                // MARK: PICKERS
                 if showGenderPicker {
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-
-                            Button(action: {
-                                showGenderPicker = false
-                            }) {
-                                Text("Закрыть")
-                            }
-                            .padding([.horizontal, .vertical], 10)
-                        }
-
-                        Picker("Gender", selection: $genderBinding) {
-                            Text("Выберите пол")
-                                .tag(Gender.none.rawValue)
-                            Text(Gender.male.rawValue)
-                                .tag(Gender.male.rawValue)
-                            Text(Gender.female.rawValue)
-                                .tag(Gender.female.rawValue)
-                        }
-                        .pickerStyle(WheelPickerStyle())
-                        .onAppear {
-                            self.dismissKeyboard()
-                        }
-                        .onChange(of: genderBinding) {
-                            if genderBinding == "Выберите пол" {
-                                genderBinding = ""
-                            }
-                            print($0)
-                        }
-                    }
+                    genderPickerSubview
                 }
             
                 if showBirthdayPicker {
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-
-                            Button(action: {
-                                showBirthdayPicker = false
-                            }) {
-                                Text("Закрыть")
-                            }
-                            .padding([.horizontal, .vertical], 10)
-                        }
-
-                        DatePicker(
-                            "Please choose date",
-                            selection: $birthDate,
-                            in: dateClosedRange,
-                            displayedComponents: .date
-                        )
-                            .labelsHidden()
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .environment(\.locale, Locale.init(identifier: "ru_RU"))
-                            .onAppear {
-                                 self.dismissKeyboard()
-                            }
-                            .onChange(of: birthDate) { value in
-                                birthdayBinding = dateFormatter.string(from: value)
-                            }
-                    }
+                    birthdayPickerSubview
                 }
             }
             .padding(.horizontal, Value.HORIZONTAL_PADDING)
         }
         .frame(width: Screen.width)
+    }
+    
+    // MARK: SUBVIEWS
+    private var genderPickerSubview: some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+
+                Button(action: {
+                    showGenderPicker = false
+                }) {
+                    Text("Закрыть")
+                }
+                .padding([.horizontal, .vertical], 10)
+            }
+
+            Picker("Gender", selection: $genderBinding) {
+                Text("Выберите пол")
+                    .tag(Gender.none.rawValue)
+                Text(Gender.male.rawValue)
+                    .tag(Gender.male.rawValue)
+                Text(Gender.female.rawValue)
+                    .tag(Gender.female.rawValue)
+            }
+            .pickerStyle(WheelPickerStyle())
+            .onAppear {
+                self.dismissKeyboard()
+            }
+            .onChange(of: genderBinding) {
+                if genderBinding == "Выберите пол" {
+                    genderBinding = ""
+                }
+                print($0)
+            }
+        }
+    }
+    
+    private var birthdayPickerSubview: some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+
+                Button(action: {
+                    showBirthdayPicker = false
+                }) {
+                    Text("Закрыть")
+                }
+                .padding([.horizontal, .vertical], 10)
+            }
+
+            DatePicker(
+                "Please choose date",
+                selection: $birthDate,
+                in: dateClosedRange,
+                displayedComponents: .date
+            )
+                .labelsHidden()
+                .datePickerStyle(WheelDatePickerStyle())
+                .environment(\.locale, Locale.init(identifier: "ru_RU"))
+                .onAppear {
+                     self.dismissKeyboard()
+                }
+                .onChange(of: birthDate) { value in
+                    birthdayBinding = dateFormatter.string(from: value)
+                }
+        }
     }
 }
 
@@ -234,6 +239,7 @@ extension RegistrationView {
     }
 }
 
+// MARK: CUSTOM PART
 struct TextFieldView:  View {
     var placeholder: String
     @Binding var bindingText: String
