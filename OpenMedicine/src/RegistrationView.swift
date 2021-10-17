@@ -50,11 +50,13 @@ struct RegistrationView: View {
     // region
     @State private var regionBinding: String = ""
     @State private var isRegionError = false
+    @State private var isRegionActive = false
 
     var body: some View {
         ZStack(alignment: .leading) {
             // background color
-            Color(red: 0.81, green: 0.81, blue: 0.81)
+//            Color(red: 0.81, green: 0.81, blue: 0.81)
+            Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
 
             VStack(alignment: .leading, spacing: Value.FIELDS_PADDING) {
@@ -62,32 +64,57 @@ struct RegistrationView: View {
                     .frame(height: Value.TOP_PADDING_RATIO)
                 
                 Text("Регистрация")
-                    .font(.system(size: 36))
+                    .font(.largeTitle)
+//                    .font(.system(size: 36))
                 
                 Spacer()
                     .frame(height: Value.TOP_PADDING_RATIO)
                 
+                // MARK: ELEMENTS
                 VStack(spacing: 0) {
                     // email
                     TextFieldView(placeholder: "Электронная почта", bindingText: $emailBinding, errorMessage: "Почта введена не правильно")
+                        .onTapGesture {
+                            showGenderPicker = false
+                            showBirthdayPicker = false
+                        }
                     
                     // gender
                     TextFieldView(placeholder: "Пол", bindingText: $genderBinding, errorMessage: "Выберите пол", chevronName: "chevron.down")
                     .onTapGesture {
-                        self.showGenderPicker = true
+                        self.showBirthdayPicker = false
+                        withAnimation(.spring()) {
+                            DispatchQueue.global().async {
+                                self.showGenderPicker = true
+                            }
+                        }
                     }
                     
                     // date of birth
                     TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, errorMessage: "Выберите дату рождения", chevronName: "chevron.down")
                     .onTapGesture {
-                        self.showBirthdayPicker = true
+                        self.showGenderPicker = false
+                        withAnimation(.spring()) {
+                            DispatchQueue.global().async {
+                                self.showBirthdayPicker = true
+                            }
+                        }
                     }
                     
                     // region
-                    NavigationLink(destination: CoateView()) {
-                        TextFieldView(placeholder: "Область", bindingText: $regionBinding, errorMessage: "Выберите область", chevronName: "chevron.right")
-                            .multilineTextAlignment(.leading)
-                    }
+                    TextFieldView(placeholder: "Область", bindingText: $regionBinding, errorMessage: "Выберите область", chevronName: "chevron.right")
+                        .multilineTextAlignment(.leading)
+                        .background(NavigationLink(destination: CoateView(), isActive: $isRegionActive) {
+                            EmptyView()
+                        })
+                        .onTapGesture {
+                            self.showBirthdayPicker = false
+                            self.showGenderPicker = false
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.isRegionActive = true
+                            }
+                        }
                 }
                 
                 Spacer()
@@ -112,81 +139,79 @@ struct RegistrationView: View {
 
                 Spacer()
 
-                
-            }
-            .padding(.horizontal, Value.HORIZONTAL_PADDING)
-            
             /*
              * Picker section
              */
-            if showGenderPicker {
-                VStack {
-                    Spacer()
-                    
-                    HStack {
+                if showGenderPicker {
+                    VStack {
                         Spacer()
+                        
+                        HStack {
+                            Spacer()
 
-                        Button(action: {
-                            showGenderPicker = false
-                        }) {
-                            Text("Закрыть")
+                            Button(action: {
+                                showGenderPicker = false
+                            }) {
+                                Text("Закрыть")
+                            }
+                            .padding([.horizontal, .vertical], 10)
                         }
-                        .padding([.horizontal, .vertical], 10)
-                    }
 
-                    Picker("Gender", selection: $genderBinding) {
-                        Text("Выберите пол")
-                            .tag(Gender.none.rawValue)
-                        Text(Gender.male.rawValue)
-                            .tag(Gender.male.rawValue)
-                        Text(Gender.female.rawValue)
-                            .tag(Gender.female.rawValue)
-                    }
-                    .pickerStyle(WheelPickerStyle())
-                    .onAppear {
-                        self.dismissKeyboard()
-                    }
-                    .onChange(of: genderBinding) {
-                        if genderBinding == "Выберите пол" {
-                            genderBinding = ""
+                        Picker("Gender", selection: $genderBinding) {
+                            Text("Выберите пол")
+                                .tag(Gender.none.rawValue)
+                            Text(Gender.male.rawValue)
+                                .tag(Gender.male.rawValue)
+                            Text(Gender.female.rawValue)
+                                .tag(Gender.female.rawValue)
                         }
-                        print($0)
-                    }
-                }
-            }
-            
-            if showBirthdayPicker {
-                VStack {
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-
-                        Button(action: {
-                            showBirthdayPicker = false
-                        }) {
-                            Text("Закрыть")
-                        }
-                        .padding([.horizontal, .vertical], 10)
-                    }
-
-                    DatePicker(
-                        "Please choose date",
-                        selection: $birthDate,
-                        in: dateClosedRange,
-                        displayedComponents: .date
-                    )
-                        .labelsHidden()
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .environment(\.locale, Locale.init(identifier: "ru_RU"))
+                        .pickerStyle(WheelPickerStyle())
                         .onAppear {
-                            // self.dismissKeyboard()
+                            self.dismissKeyboard()
                         }
-                        .onChange(of: birthDate) { value in
-                            birthdayBinding = dateFormatter.string(from: value)
+                        .onChange(of: genderBinding) {
+                            if genderBinding == "Выберите пол" {
+                                genderBinding = ""
+                            }
+                            print($0)
                         }
+                    }
+                }
+            
+                if showBirthdayPicker {
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+
+                            Button(action: {
+                                showBirthdayPicker = false
+                            }) {
+                                Text("Закрыть")
+                            }
+                            .padding([.horizontal, .vertical], 10)
+                        }
+
+                        DatePicker(
+                            "Please choose date",
+                            selection: $birthDate,
+                            in: dateClosedRange,
+                            displayedComponents: .date
+                        )
+                            .labelsHidden()
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .environment(\.locale, Locale.init(identifier: "ru_RU"))
+                            .onAppear {
+                                 self.dismissKeyboard()
+                            }
+                            .onChange(of: birthDate) { value in
+                                birthdayBinding = dateFormatter.string(from: value)
+                            }
+                    }
                 }
             }
+            .padding(.horizontal, Value.HORIZONTAL_PADDING)
         }
         .frame(width: Screen.width)
     }
@@ -195,7 +220,10 @@ struct RegistrationView: View {
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RegistrationView()
+            Group {
+//                RegistrationView().colorScheme(.light)
+                RegistrationView().colorScheme(.dark)
+            }
         }
     }
 }
@@ -203,22 +231,6 @@ struct RegistrationView_Previews: PreviewProvider {
 extension RegistrationView {
     private func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-    
-    private func onEmailChanged(_ text: String) {
-        
-    }
-    
-    private func onGenderChanged(_ text: String) {
-
-    }
-    
-    private func onBirthdayChanged(_ text: String) {
-        
-    }
-    
-    private func onRegionChanged(_ text: String) {
-        
     }
 }
 
@@ -243,16 +255,16 @@ struct TextFieldView:  View {
                         .modifier(TextFieldArrow(systemName: chevronName))
                 }
 
-                VStack {
+                VStack(spacing: 10) {
                     if isError {
-                        Text(errorMessage)
+                        Text("⇑ \(errorMessage)")
                             .font(.system(size: 12))
-                            .fontWeight(.light)
+                            .fontWeight(.regular)
                             .foregroundColor(.red)
                             .padding(.leading)
                     }
                 }
-                .frame(height: 14)
+                .frame(height: 20)
             }
         }
         .frame(maxWidth: .infinity)
@@ -270,14 +282,14 @@ struct TextFieldView:  View {
             }
         })
             .disableAutocorrection(true)
-            .font(Font.system(size: 16))
+            .font(.title2)
             .frame(height: 30)
             .padding(7)
             .overlay(
                 RoundedRectangle(cornerRadius: 10.0)
-                    .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
+                    .strokeBorder(Color(uiColor: UIColor.systemGray3), style: StrokeStyle(lineWidth: 0.5))
             )
-            .background(RoundedRectangle(cornerRadius: 10.0).fill(isError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isFocused || !bindingText.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
+            .background(RoundedRectangle(cornerRadius: 10.0).fill(isError ? Color(.systemPink) : isFocused || !bindingText.isEmpty ? Color.white : Color(.secondarySystemBackground)))
     }
     
     private func onFieldChanged(_ text: String) {
