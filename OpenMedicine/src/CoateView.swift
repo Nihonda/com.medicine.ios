@@ -25,6 +25,7 @@ struct CoateView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(height: 30, alignment: .center)
                                     .onTapGesture {
+                                        restoreDefaults(parent: parent)
                                         triggerUpdate(for: item)
                                     }
 
@@ -59,6 +60,17 @@ struct CoateView_Previews: PreviewProvider {
 }
 
 extension CoateView {
+    private func restoreDefaults(parent: CoateItem) {
+        // clear
+        parent.selected = nil
+        
+        if let children = parent.child {
+            for child in children {
+                restoreDefaults(parent: child)
+            }
+        }
+    }
+    
     private func triggerUpdate(for item: CoateItem) {
         item.selected?.toggle() ?? (item.selected = true)
         
