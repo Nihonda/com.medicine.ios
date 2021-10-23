@@ -11,6 +11,7 @@ struct CoateView: View {
     @EnvironmentObject var coate: CoateViewModel
     
     @State var isUpdated = true
+    @AppStorage("coate_item") var coateItem: Data = Data()
     
     var body: some View {
         VStack {
@@ -27,6 +28,7 @@ struct CoateView: View {
                                     .onTapGesture {
                                         restoreDefaults(parent: parent)
                                         triggerUpdate(for: item)
+                                        saveItem(item)
                                     }
 
                                 Text(item.nm)
@@ -43,8 +45,8 @@ struct CoateView: View {
             Spacer()
         }
         .padding(.horizontal, Layout.Registration.HORIZONTAL_PADDING)
-        .onLoad {
-            
+        .onAppear {
+            restoreItem()
         }
         .navigationBarTitle("Выберите место проживания", displayMode: .inline)
     }
@@ -78,6 +80,41 @@ extension CoateView {
         isUpdated = false
         DispatchQueue.main.async {
             self.isUpdated = true
+        }
+    }
+    
+    private func saveItem(_ item: CoateItem) {
+        guard let data = try? JSONEncoder().encode(item) else { return }
+        coateItem = data
+    }
+    
+    private func setItem(_ item: CoateItem, target: CoateItem, with: Bool) {
+        if item.cd == target.cd {
+            item.selected = true
+            return
+        }
+        
+        if let children = item.child {
+            for child in children {
+                setItem(child, target: target, with: true)
+            }
+        }
+    }
+    
+    private func restoreItem() {
+        guard let item = try? JSONDecoder().decode(CoateItem.self, from: coateItem) else { return }
+        
+        // clear
+        if let parent = coate.data.data {
+            restoreDefaults(parent: parent)
+            
+            // set
+            isUpdated = false
+            setItem(parent, target: item, with: true)
+
+            DispatchQueue.main.async {
+                self.isUpdated = true
+            }
         }
     }
 }
