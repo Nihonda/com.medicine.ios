@@ -48,6 +48,7 @@ struct RegistrationView: View {
     @State private var isBirthdayError: Bool = false
     
     // region
+    @AppStorage("coate_item") var coateItem: Data = Data()
     @State private var regionBinding: String = ""
     @State private var isRegionError = false
     @State private var isRegionActive = false
@@ -158,6 +159,9 @@ struct RegistrationView: View {
             .padding(.horizontal, Value.HORIZONTAL_PADDING)
         }
         .frame(width: Screen.width)
+        .onAppear {
+            restoreCoate()
+        }
     }
     
     // MARK: SUBVIEWS
@@ -259,6 +263,13 @@ extension RegistrationView {
     
     private func textFieldIsEmpty(_ string: String) -> Bool {
         return !string.isEmpty
+    }
+    
+    private func restoreCoate() {
+        guard let item = try? JSONDecoder().decode(CoateItem.self, from: coateItem) else { return }
+        
+        let str = item.code.replacingOccurrences(of: " ", with: "")
+        regionBinding = "\(str) - \(item.nm)"
     }
 }
 
