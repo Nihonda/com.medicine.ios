@@ -193,6 +193,7 @@ struct RegistrationView: View {
                     genderBinding = ""
                 }
                 print($0)
+                isGenderError = genderBinding.isEmpty
             }
         }
     }
