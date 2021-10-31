@@ -70,14 +70,14 @@ struct RegistrationView: View {
                 // MARK: ELEMENTS
                 VStack(spacing: 0) {
                     // email
-                    TextFieldView(placeholder: "Электронная почта", bindingText: $emailBinding, errorMessage: "Почта введена не правильно", onChangeHandler: textFieldValidatorEmail)
+                    TextFieldView(placeholder: "Электронная почта", bindingText: $emailBinding, isError: $isEmailError, errorMessage: "Почта введена не правильно", onChangeHandler: textFieldValidatorEmail)
                         .onTapGesture {
                             showGenderPicker = false
                             showBirthdayPicker = false
                         }
                     
                     // gender
-                    TextFieldView(placeholder: "Пол", bindingText: $genderBinding, errorMessage: "Выберите пол", chevronName: "chevron.down", onChangeHandler: textFieldIsEmpty)
+                    TextFieldView(placeholder: "Пол", bindingText: $genderBinding, isError: $isGenderError, errorMessage: "Выберите пол", chevronName: "chevron.down", onChangeHandler: textFieldIsEmpty)
                     .onTapGesture {
                         self.showBirthdayPicker = false
                         withAnimation(.spring()) {
@@ -88,7 +88,7 @@ struct RegistrationView: View {
                     }
                     
                     // date of birth
-                    TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, errorMessage: "Выберите дату рождения", chevronName: "chevron.down", onChangeHandler: textFieldIsEmpty)
+                    TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, isError: $isBirthdayError, errorMessage: "Выберите дату рождения", chevronName: "chevron.down", onChangeHandler: textFieldIsEmpty)
                     .onTapGesture {
                         self.showGenderPicker = false
                         withAnimation(.spring()) {
@@ -99,7 +99,7 @@ struct RegistrationView: View {
                     }
                     
                     // region
-                    TextFieldView(placeholder: "Область/Район/Город/Село", bindingText: $regionBinding, errorMessage: "Выберите область", chevronName: "chevron.right", onChangeHandler: textFieldIsEmpty)
+                    TextFieldView(placeholder: "Область/Район/Город/Село", bindingText: $regionBinding, isError: $isRegionError, errorMessage: "Выберите область", chevronName: "chevron.right", onChangeHandler: textFieldIsEmpty)
                         .multilineTextAlignment(.leading)
                         .background(NavigationLink(destination: CoateView(), isActive: $isRegionActive) {
                             EmptyView()
@@ -120,7 +120,16 @@ struct RegistrationView: View {
                 HStack {
                     Spacer()
                     Button(action: {
+                        isEmailError = !textFieldValidatorEmail(emailBinding)
+                        isGenderError = !textFieldIsEmpty(genderBinding)
+                        isBirthdayError = !textFieldIsEmpty(birthdayBinding)
+                        isRegionError = !textFieldIsEmpty(regionBinding)
                         
+                        if isEmailError || isGenderError || isBirthdayError || isRegionError {
+                            print("NOT VALID")
+                        } else {
+                            print("SUCCESS")
+                        }
                     }) {
                         Text("Зарегистрироваться".uppercased())
                             .font(.system(size: 16))
@@ -256,11 +265,11 @@ extension RegistrationView {
 struct TextFieldView:  View {
     var placeholder: String
     @Binding var bindingText: String
+    @Binding var isError: Bool
     var errorMessage: String
     var chevronName: String = ""
     var onChangeHandler: (String) -> (Bool)
     
-    @State var isError: Bool = false
     @State var isFocused: Bool = false
 
     var body: some View {
