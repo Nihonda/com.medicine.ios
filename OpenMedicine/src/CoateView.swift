@@ -20,7 +20,7 @@ struct CoateView: View {
                     List{
                         OutlineGroup(parent, children: \.child) { item in
                             HStack(spacing: 15) {
-                                Image(systemName: item.selected == true ? "checkmark.circle.fill" : "circle")
+                                Image(systemName: item.selected == true ? "checkmark.circle.fill" : childSelected(item) ? "circle.circle" : "circle")
                                     .resizable()
                                     .renderingMode(.original)
                                     .aspectRatio(contentMode: .fit)
@@ -86,6 +86,26 @@ extension CoateView {
     private func saveItem(_ item: CoateItem) {
         guard let data = try? JSONEncoder().encode(item) else { return }
         coateItem = data
+    }
+    
+    private func childSelected(_ item: CoateItem) -> Bool {
+        if let children = item.child {
+            let items = children.filter({ $0.selected == true })
+            if items.count > 0 {
+                return true
+            } else {
+                var selected = false
+                for child in children {
+                    selected = childSelected(child)
+                    if selected {
+                        return selected
+                    }
+                }
+                return selected
+            }
+        }
+
+        return false
     }
     
     private func setItem(_ item: CoateItem, target: CoateItem, with: Bool) {
