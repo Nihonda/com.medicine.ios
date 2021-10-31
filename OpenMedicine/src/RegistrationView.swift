@@ -50,271 +50,186 @@ struct RegistrationView: View {
     // region
     @State private var regionBinding: String = ""
     @State private var isRegionError = false
+    @State private var isRegionActive = false
 
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .leading) {
-                // background color
-                Color(red: 0.97, green: 0.98, blue: 1)
-                    .edgesIgnoringSafeArea(.all)
+        ZStack(alignment: .leading) {
+            Color(.systemBackground)
+                .edgesIgnoringSafeArea(.all)
 
-                VStack(alignment: .leading, spacing: Value.FIELDS_PADDING) {
-                    Spacer()
-                        .frame(height: Value.TOP_PADDING_RATIO)
-                    
-                    Text("Регистрация")
-                        .font(.system(size: 36))
-                    
-                    Spacer()
-                        .frame(height: Value.TOP_PADDING_RATIO)
-                    
-                    VStack(spacing: 3) {
-                        // email
-                        HStack(alignment:.top, spacing: 0) {
-                            VStack(alignment: .leading, spacing: 0) {
-                                TextField("Электронная почта", text: self.$emailBinding.onChange(onEmailChanged), onEditingChanged: { editingChanged in
-                                    isEmailFocused = editingChanged
-                                    if editingChanged {
-                                        // focused
-                                        
-                                    } else {
-                                        // focus lost
-                                        
-                                    }
-                                })
-                                    .disableAutocorrection(true)
-                                    .font(Font.system(size: 16))
-                                    .frame(height: 30)
-                                    .padding(7)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10.0)
-                                            .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                    )
-                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : isEmailFocused || !emailBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                                
-                                VStack {
-                                    if isEmailError {
-                                        Text("Проверьте правильность")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.light)
-                                            .foregroundColor(.red)
-                                            .padding(.leading)
-                                    }
-                                }
-                                .frame(height: 14)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        // gender
-                        HStack(alignment:.top, spacing: 0) {
-                            VStack(alignment: .leading, spacing: 0) {
-                                TextField("Пол", text: self.$genderBinding.onChange(onGenderChanged), onEditingChanged: { editingChanged in
-                                    if editingChanged {
-                                        // focused
-                                        
-                                    } else {
-                                        // focus lost
-                                        
-                                    }
-                                })
-                                    .disableAutocorrection(true)
-                                    .disabled(true)
-                                    .font(Font.system(size: 16))
-                                    .frame(height: 30)
-                                    .padding(7)
-                                    .modifier(TextFieldArrow(systemName: "chevron.down"))
-                                    .overlay(
-                                        VStack {
-                                            RoundedRectangle(cornerRadius: 10.0)
-                                                .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                        }
-                                    )
-                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(isEmailError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : !genderBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                                
-                                VStack {
-                                    if isGenderError {
-                                        Text("Выберите пол")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.light)
-                                            .foregroundColor(.red)
-                                            .padding(.leading)
-                                    }
-                                }
-                                .frame(height: 14)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
+            VStack(alignment: .leading, spacing: Value.FIELDS_PADDING) {
+                Spacer()
+                    .frame(height: Value.TOP_PADDING_RATIO)
+                
+                Text("Регистрация")
+                    .font(.largeTitle)
+                
+                Spacer()
+                    .frame(height: Value.TOP_PADDING_RATIO)
+                
+                // MARK: ELEMENTS
+                VStack(spacing: 0) {
+                    // email
+                    TextFieldView(placeholder: "Электронная почта", bindingText: $emailBinding, errorMessage: "Почта введена не правильно")
                         .onTapGesture {
-                            self.showGenderPicker = true
+                            showGenderPicker = false
+                            showBirthdayPicker = false
                         }
-                        
-                        // date of birth
-                        HStack(alignment:.top, spacing: 0) {
-                            VStack(alignment: .leading, spacing: 0) {
-                                TextField("Дата рождения", text: self.$birthdayBinding.onChange(onBirthdayChanged), onEditingChanged: { editingChanged in
-                                    if editingChanged {
-                                        // focused
-                                        
-                                    } else {
-                                        // focus lost
-                                        
-                                    }
-                                })
-                                    .disableAutocorrection(true)
-                                    .disabled(true)
-                                    .font(Font.system(size: 16))
-                                    .frame(height: 30)
-                                    .padding(7)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10.0)
-                                            .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                    )
-                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(isBirthdayError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : !birthdayBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                                
-                                VStack {
-                                    if isBirthdayError {
-                                        Text("Проверьте правильность")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.light)
-                                            .foregroundColor(.red)
-                                            .padding(.leading)
-                                    }
-                                }
-                                .frame(height: 14)
+                    
+                    // gender
+                    TextFieldView(placeholder: "Пол", bindingText: $genderBinding, errorMessage: "Выберите пол", chevronName: "chevron.down")
+                    .onTapGesture {
+                        self.showBirthdayPicker = false
+                        withAnimation(.spring()) {
+                            DispatchQueue.global().async {
+                                self.showGenderPicker = true
                             }
-                            .onTapGesture {
+                        }
+                    }
+                    
+                    // date of birth
+                    TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, errorMessage: "Выберите дату рождения", chevronName: "chevron.down")
+                    .onTapGesture {
+                        self.showGenderPicker = false
+                        withAnimation(.spring()) {
+                            DispatchQueue.global().async {
                                 self.showBirthdayPicker = true
                             }
                         }
-                        .frame(maxWidth: .infinity)
-                        
-                        // region
-                        HStack(alignment:.top, spacing: 0) {
-                            VStack(alignment: .leading, spacing: 0) {
-                                NavigationLink(destination: CoateView()) {
-                                    TextField("Область", text: self.$regionBinding.onChange(onRegionChanged), onEditingChanged: { editingChanged in
-                                        if editingChanged {
-                                            // focused
-
-                                        } else {
-                                            // focus lost
-
-                                        }
-                                    })
-                                        .disableAutocorrection(true)
-                                        .disabled(true)
-                                        .font(Font.system(size: 16))
-                                        .frame(height: 30)
-                                        .padding(7)
-                                        .modifier(TextFieldArrow(systemName: "chevron.right"))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 10.0)
-                                                .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 0.5))
-                                        )
-                                        .background(RoundedRectangle(cornerRadius: 10.0).fill(isRegionError ? Color(red: 0.93, green: 0.74, blue: 0.71, opacity: 1.0) : !regionBinding.isEmpty ? Color.white : Color(red: 230/255, green: 236/255, blue: 239/255)))
-                                }
-
-                                VStack {
-                                    if isRegionError {
-                                        Text("Проверьте правильность")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.light)
-                                            .foregroundColor(.red)
-                                            .padding(.leading)
-                                    }
-                                }
-                                .frame(height: 14)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
                     }
                     
+                    // region
+                    TextFieldView(placeholder: "Область", bindingText: $regionBinding, errorMessage: "Выберите область", chevronName: "chevron.right")
+                        .multilineTextAlignment(.leading)
+                        .background(NavigationLink(destination: CoateView(), isActive: $isRegionActive) {
+                            EmptyView()
+                        })
+                        .onTapGesture {
+                            self.showBirthdayPicker = false
+                            self.showGenderPicker = false
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.isRegionActive = true
+                            }
+                        }
+                }
+                
+                Spacer()
+                
+                // MARK: REGISTER BUTTON
+                HStack {
                     Spacer()
-                    
+                    Button(action: {
+                        
+                    }) {
+                        Text("Зарегистрироваться".uppercased())
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .padding(.horizontal, 20)
+                            .foregroundColor(Color.white)
+                            .background(Color(red: 0, green: 163/255, blue: 1))
+                            .cornerRadius(10)
+                    }
+                    Spacer()
                 }
-                .padding(.horizontal, Value.HORIZONTAL_PADDING)
-                
-                /*
-                 * Picker section
-                 */
+
+                Spacer()
+
+                // MARK: PICKERS
                 if showGenderPicker {
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-
-                            Button(action: {
-                                showGenderPicker = false
-                            }) {
-                                Text("Закрыть")
-                            }
-                            .padding([.horizontal, .vertical], 10)
-                        }
-
-                        Picker("Gender", selection: $genderBinding) {
-                            Text("Выберите пол")
-                                .tag(Gender.none.rawValue)
-                            Text(Gender.male.rawValue)
-                                .tag(Gender.male.rawValue)
-                            Text(Gender.female.rawValue)
-                                .tag(Gender.female.rawValue)
-                        }
-                        .pickerStyle(WheelPickerStyle())
-                        .onAppear {
-                            self.dismissKeyboard()
-                        }
-                        .onChange(of: genderBinding) {
-                            if genderBinding == "Выберите пол" {
-                                genderBinding = ""
-                            }
-                            print($0)
-                        }
-                    }
+                    genderPickerSubview
                 }
-                
+            
                 if showBirthdayPicker {
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-
-                            Button(action: {
-                                showBirthdayPicker = false
-                            }) {
-                                Text("Закрыть")
-                            }
-                            .padding([.horizontal, .vertical], 10)
-                        }
-
-                        DatePicker(
-                            "Please choose date",
-                            selection: $birthDate,
-                            in: dateClosedRange,
-                            displayedComponents: .date
-                        )
-                            .labelsHidden()
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .environment(\.locale, Locale.init(identifier: "ru_RU"))
-                            .onAppear {
-                                // self.dismissKeyboard()
-                            }
-                            .onChange(of: birthDate) { value in
-                                birthdayBinding = dateFormatter.string(from: value)
-                            }
-                    }
+                    birthdayPickerSubview
                 }
             }
-            .frame(width: Screen.width)
+            .padding(.horizontal, Value.HORIZONTAL_PADDING)
+        }
+        .frame(width: Screen.width)
+    }
+    
+    // MARK: SUBVIEWS
+    private var genderPickerSubview: some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+
+                Button(action: {
+                    showGenderPicker = false
+                }) {
+                    Text("Закрыть")
+                }
+                .padding([.horizontal, .vertical], 10)
+            }
+
+            Picker("Gender", selection: $genderBinding) {
+                Text("Выберите пол")
+                    .tag(Gender.none.rawValue)
+                Text(Gender.male.rawValue)
+                    .tag(Gender.male.rawValue)
+                Text(Gender.female.rawValue)
+                    .tag(Gender.female.rawValue)
+            }
+            .pickerStyle(WheelPickerStyle())
+            .onAppear {
+                self.dismissKeyboard()
+            }
+            .onChange(of: genderBinding) {
+                if genderBinding == "Выберите пол" {
+                    genderBinding = ""
+                }
+                print($0)
+            }
+        }
+    }
+    
+    private var birthdayPickerSubview: some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+
+                Button(action: {
+                    showBirthdayPicker = false
+                }) {
+                    Text("Закрыть")
+                }
+                .padding([.horizontal, .vertical], 10)
+            }
+
+            DatePicker(
+                "Please choose date",
+                selection: $birthDate,
+                in: dateClosedRange,
+                displayedComponents: .date
+            )
+                .labelsHidden()
+                .datePickerStyle(WheelDatePickerStyle())
+                .environment(\.locale, Locale.init(identifier: "ru_RU"))
+                .onAppear {
+                     self.dismissKeyboard()
+                }
+                .onChange(of: birthDate) { value in
+                    birthdayBinding = dateFormatter.string(from: value)
+                }
         }
     }
 }
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        NavigationView {
+            Group {
+//                RegistrationView().colorScheme(.light)
+                RegistrationView().colorScheme(.dark)
+            }
+        }
     }
 }
 
@@ -322,20 +237,68 @@ extension RegistrationView {
     private func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
-    
-    private func onEmailChanged(_ text: String) {
-        
-    }
-    
-    private func onGenderChanged(_ text: String) {
+}
 
+// MARK: CUSTOM PART
+struct TextFieldView:  View {
+    var placeholder: String
+    @Binding var bindingText: String
+    var errorMessage: String
+    var chevronName: String = ""
+//    let onChangeHandler: (String) -> ()
+    
+    @State var isError: Bool = false
+    @State var isFocused: Bool = false
+
+    var body: some View {
+        HStack(alignment:.top, spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                if chevronName.isEmpty {
+                    innerTextField()
+                } else {
+                    innerTextField()
+                        .disabled(true)
+                        .modifier(TextFieldArrow(systemName: chevronName))
+                }
+
+                VStack(spacing: 10) {
+                    if isError {
+                        Text("⇑ \(errorMessage)")
+                            .font(.system(size: 12))
+                            .fontWeight(.regular)
+                            .foregroundColor(.red)
+                            .padding(.leading)
+                    }
+                }
+                .frame(height: 20)
+            }
+        }
+        .frame(maxWidth: .infinity)
     }
     
-    private func onBirthdayChanged(_ text: String) {
-        
+    private func innerTextField() -> some View {
+        return TextField(placeholder, text: self.$bindingText.onChange(onFieldChanged), onEditingChanged: { editingChanged in
+            isFocused = editingChanged
+            if editingChanged {
+                // focused
+                
+            } else {
+                // focus lost
+                
+            }
+        })
+            .disableAutocorrection(true)
+            .font(.title2)
+            .frame(height: 30)
+            .padding(7)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10.0)
+                    .strokeBorder(Color(uiColor: UIColor.systemGray3), style: StrokeStyle(lineWidth: 0.5))
+            )
+            .background(RoundedRectangle(cornerRadius: 10.0).fill(isError ? Color(.systemPink) : isFocused || !bindingText.isEmpty ? Color.white : Color(.secondarySystemBackground)))
     }
     
-    private func onRegionChanged(_ text: String) {
+    private func onFieldChanged(_ text: String) {
         
     }
 }
