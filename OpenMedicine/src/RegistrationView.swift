@@ -334,7 +334,7 @@ struct TextFieldView:  View {
                 RoundedRectangle(cornerRadius: 10.0)
                     .strokeBorder(Color(uiColor: UIColor.systemGray3), style: StrokeStyle(lineWidth: 0.5))
             )
-            .background(RoundedRectangle(cornerRadius: 10.0).fill(isError ? Color(.systemRed) : isFocused || !bindingText.isEmpty ? Color.white : Color(.secondarySystemBackground)))
+            .background(RoundedRectangle(cornerRadius: 10.0).fill(isError ? Color(.systemRed) : isFocused || !bindingText.isEmpty ? Color(UIColor.systemBackground) : Color(.secondarySystemBackground)))
     }
     
     private func onFieldChanged(_ text: String) {
