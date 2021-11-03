@@ -12,7 +12,7 @@ class K {
     static let HTTPS = "https://"
     
 #if DEBUG
-    static let HOST_API           = HTTP + "35.224.94.82:81"
+    static let HOST_API           = HTTP + "localhost:8081"//"35.224.94.82:81"
 #else
     static let HOST_API           = HTTPS + "tender-kg.info"
 #endif
