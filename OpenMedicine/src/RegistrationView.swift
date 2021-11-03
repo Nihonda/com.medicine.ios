@@ -20,16 +20,19 @@ struct RegistrationView: View {
      States
     */
     // email
+    @AppStorage("email") var email: String = ""
     @State private var emailBinding: String = ""
     @State private var isEmailFocused = false
     @State private var isEmailError: Bool = false
     
     // gender
+    @AppStorage("gender") var gender: String = ""
     @State private var genderBinding: String = ""
     @State private var isGenderError: Bool = false
     @State private var showGenderPicker: Bool = false
     
     // birthday
+    @AppStorage("birthday") var birthday: String = ""
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .year, value: -99, to: Date())!
         let max = Calendar.current.date(byAdding: .year, value: -15, to: Date())!
@@ -78,7 +81,7 @@ struct RegistrationView: View {
                         }
                     
                     // gender
-                    TextFieldView(placeholder: "Пол", bindingText: $genderBinding, isError: $isGenderError, errorMessage: "Выберите пол", chevronName: "chevron.down", onChangeHandler: textFieldIsEmpty)
+                    TextFieldView(placeholder: "Пол", bindingText: $genderBinding, isError: $isGenderError, errorMessage: "Выберите пол", chevronName: "chevron.down", onChangeHandler: genderIsEmpty)
                     .onTapGesture {
                         self.showBirthdayPicker = false
                         withAnimation(.spring()) {
@@ -89,7 +92,7 @@ struct RegistrationView: View {
                     }
                     
                     // date of birth
-                    TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, isError: $isBirthdayError, errorMessage: "Выберите дату рождения", chevronName: "chevron.down", onChangeHandler: textFieldIsEmpty)
+                    TextFieldView(placeholder: "Дата рождения", bindingText: $birthdayBinding, isError: $isBirthdayError, errorMessage: "Выберите дату рождения", chevronName: "chevron.down", onChangeHandler: birthdayIsEmpty)
                     .onTapGesture {
                         self.showGenderPicker = false
                         withAnimation(.spring()) {
@@ -100,7 +103,7 @@ struct RegistrationView: View {
                     }
                     
                     // region
-                    TextFieldView(placeholder: "Область/Район/Город/Село", bindingText: $regionBinding, isError: $isRegionError, errorMessage: "Выберите область", chevronName: "chevron.right", onChangeHandler: textFieldIsEmpty)
+                    TextFieldView(placeholder: "Область/Район/Город/Село", bindingText: $regionBinding, isError: $isRegionError, errorMessage: "Выберите область", chevronName: "chevron.right", onChangeHandler: coateIsEmpty)
                         .multilineTextAlignment(.leading)
                         .background(NavigationLink(destination: CoateView(), isActive: $isRegionActive) {
                             EmptyView()
@@ -122,12 +125,12 @@ struct RegistrationView: View {
                     Spacer()
                     Button(action: {
                         isEmailError = !textFieldValidatorEmail(emailBinding)
-                        isGenderError = !textFieldIsEmpty(genderBinding)
-                        isBirthdayError = !textFieldIsEmpty(birthdayBinding)
-                        isRegionError = !textFieldIsEmpty(regionBinding)
+                        isGenderError = !genderIsEmpty(genderBinding)
+                        isBirthdayError = !birthdayIsEmpty(birthdayBinding)
+                        isRegionError = !coateIsEmpty(regionBinding)
                         
                         if isEmailError || isGenderError || isBirthdayError || isRegionError {
-                            print("NOT VALID")
+                            print("[ERROR] : \(String(describing: type(of: self)))")
                         } else {
                             print("SUCCESS")
                         }
@@ -231,6 +234,7 @@ struct RegistrationView: View {
                 }
                 .onChange(of: birthDate) { value in
                     birthdayBinding = dateFormatter.string(from: value)
+                    isBirthdayError = birthdayBinding.isEmpty
                 }
         }
     }
@@ -258,13 +262,37 @@ extension RegistrationView {
         let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
         //let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: string)
+        let result = emailPredicate.evaluate(with: string)
+        
+        // save email to AppStorage
+        if result {
+            email = string
+        }
+        return result
     }
     
-    private func textFieldIsEmpty(_ string: String) -> Bool {
+    // save gender to AppStorage
+    private func genderIsEmpty(_ string: String) -> Bool {
+        let result = !string.isEmpty
+        if result {
+            gender = string
+        }
+        return result
+    }
+    
+    // save birthday to AppStorage
+    private func birthdayIsEmpty(_ string: String) -> Bool {
+        let result = !string.isEmpty
+        if result {
+            gender = string
+        }
+        return result
+    }
+    
+    private func coateIsEmpty(_ string: String) -> Bool {
         return !string.isEmpty
     }
-    
+
     private func restoreCoate() {
         guard let item = try? JSONDecoder().decode(CoateItem.self, from: coateItem) else { return }
         
