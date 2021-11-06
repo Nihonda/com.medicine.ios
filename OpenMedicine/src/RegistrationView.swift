@@ -132,7 +132,8 @@ struct RegistrationView: View {
                         if isEmailError || isGenderError || isBirthdayError || isRegionError {
                             print("[ERROR] : \(String(describing: type(of: self)))")
                         } else {
-                            print("SUCCESS")
+                            // register device
+                            registerUser()
                         }
                     }) {
                         Text("Зарегистрироваться".uppercased())
@@ -284,7 +285,7 @@ extension RegistrationView {
     private func birthdayIsEmpty(_ string: String) -> Bool {
         let result = !string.isEmpty
         if result {
-            gender = string
+            birthday = string
         }
         return result
     }
@@ -298,6 +299,29 @@ extension RegistrationView {
         
         let str = item.code.replacingOccurrences(of: " ", with: "")
         regionBinding = "\(str) - \(item.nm)"
+    }
+    
+    private func registerUser() {
+        guard let item = try? JSONDecoder().decode(CoateItem.self, from: coateItem) else { return }
+        let uuid = UUID().uuidString
+        let url = K.API.USER_API
+        let params = [
+            "uuid=\(uuid)",
+            "email=\(email.lowercased())",
+            "gender=\(gender == Gender.male.rawValue ? 1 : 2)",
+            "birthday=\(birthday)",
+            "coate_id=\(item.cd)",
+            "device_type=1"
+        ].joined(separator: "&")
+        Api.shared.fetch(of: SuccessModel.self, from: [url, params].joined(separator: "?"), isPost: true) { result in
+            switch result {
+            case .failure(let error):
+                print("[FAILED]: " + [url, params].joined(separator: "?"))
+                print(String(describing: error))
+            case .success(let data):
+                print("[SUCCESS]: \(data.message)")
+            }
+        }
     }
 }
 
