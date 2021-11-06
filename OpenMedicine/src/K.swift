@@ -18,7 +18,8 @@ class K {
 #endif
     
     class API {
-        static let COATE_API = K.HOST_API + "/api/v1/region-list"
+        static let COATE_API    = K.HOST_API + "/api/v1/region-list"
+        static let USER_API     = K.HOST_API + "/api/mobile/v1/store-user"
     }
     
     class Source {
