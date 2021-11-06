@@ -16,6 +16,7 @@ enum Gender: String, CaseIterable {
 struct RegistrationView: View {
     typealias Value = Layout.Registration
     
+    @AppStorage("uuid") var uuid: String = ""
     /*
      States
     */
@@ -133,7 +134,7 @@ struct RegistrationView: View {
                             print("[ERROR] : \(String(describing: type(of: self)))")
                         } else {
                             // register device
-                            registerUser()
+                            checkUserExists()
                         }
                     }) {
                         Text("Зарегистрироваться".uppercased())
@@ -320,6 +321,25 @@ extension RegistrationView {
                 print(String(describing: error))
             case .success(let data):
                 print("[SUCCESS]: \(data.message)")
+                
+                // save uuid
+                self.uuid = uuid
+            }
+        }
+    }
+    
+    private func checkUserExists() {
+        let url = K.API.CHECK_USER
+        let params = "email=\(email.lowercased())"
+        Api.shared.fetch(of: UUIDModel.self, from: [url, params].joined(separator: "?")) { result in
+            switch result {
+            case .failure( _):
+                print("PARAMS: \(params) does not exist")
+//                print(String(describing: error))
+                registerUser()
+            case .success(let data):
+                // save uuid
+                uuid = data.uuid
             }
         }
     }
