@@ -20,6 +20,7 @@ class K {
     class API {
         static let COATE_API    = K.HOST_API + "/api/v1/region-list"
         static let USER_API     = K.HOST_API + "/api/mobile/v1/store-user"
+        static let CHECK_USER   = K.HOST_API + "/api/mobile/v1/user"
     }
     
     class Source {
