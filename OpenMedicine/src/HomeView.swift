@@ -35,6 +35,58 @@ struct HomeView: View {
                 bannerSubview
                 
                 Spacer()
+                    .frame(height: 33)
+                
+                HStack {
+                    Button(action: {
+                        
+                    }) {
+                        VStack {
+                            Image(systemName: "mappin.and.ellipse")
+                                .resizable()
+                                .renderingMode(.original)
+                                .frame(width: 50, height: 50)
+
+                            Text("Карта")
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.black)
+                        }
+                        .frame(width: 160, height: 160)
+                    }
+                    .background(Color.white)
+                    .cornerRadius(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25).stroke(Color(.systemGray), lineWidth: 1)
+                    )
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        
+                    }) {
+                        VStack {
+                            Image(systemName: "rectangle.and.text.magnifyingglass")
+                                .resizable()
+                                .renderingMode(.original)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 50)
+                            
+                            Text("Поиск")
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.black)
+                        }
+                        .frame(width: 160, height: 160)
+                    }
+                    .background(Color.white)
+                    .cornerRadius(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25).stroke(Color(.systemGray), lineWidth: 1)
+                    )
+                }
+                .font(.system(size: 17))
+                .foregroundColor(blueColor)
+                
+                Spacer()
             }
             .padding()
         }
@@ -135,7 +187,12 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView()
+            ZStack {
+                Color(.secondarySystemBackground)
+                    .ignoresSafeArea()
+                
+                HomeView()
+            }
         }
     }
 }
