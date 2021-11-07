@@ -32,6 +32,8 @@ struct HomeView: View {
                 Spacer()
                     .frame(height: 50)
                 
+                bannerSubview
+                
                 Spacer()
             }
             .padding()
@@ -107,6 +109,26 @@ struct HomeView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 15).stroke(Color(.systemGray), lineWidth: 2)
         )
+    }
+    
+    private var bannerSubview: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 20) {
+                ForEach(0..<5) { index in
+                    HStack {
+                        Text("Баннер \(index + 1)")
+                            .font(.system(size: 28))
+                    }
+                    .frame(height: 170)
+                    .frame(width: Screen.width - 40)
+                    .background(Color(.systemGray3))
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20).stroke(Color(.systemGray), lineWidth: 1)
+                    )
+                }
+            }
+        }
     }
 }
 
