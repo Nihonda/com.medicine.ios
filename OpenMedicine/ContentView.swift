@@ -12,15 +12,24 @@ struct ContentView: View {
     @State var isActive:Bool = false
     @StateObject var coate = CoateViewModel()
     
+    @AppStorage("uuid") var uuid: String = ""
+    
     // region default code
     let code = "41700000000000" // Kyrgyzstan all data
     
     var body: some View {
         NavigationView {
             ZStack {
+                Color(.secondarySystemBackground)
+                    .ignoresSafeArea()
+                
                 if isActive {
-                    RegistrationView()
-                        .transition(AnyTransition.opacity.animation(.easeInOut))
+                    if uuid.isEmpty {
+                        RegistrationView()
+                            .transition(AnyTransition.opacity.animation(.easeInOut))
+                    } else {
+                        HomeView()
+                    }
                 } else {
                     StartUpView()
                 }
