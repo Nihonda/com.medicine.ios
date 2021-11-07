@@ -25,17 +25,17 @@ struct HomeView: View {
                 totalSubview
                 
                 Spacer()
-                    .frame(height: 50)
+                    .frame(height: Screen.isiPhoneXDevice ? 50 : 30)
                 
                 freewordSubview
                 
                 Spacer()
-                    .frame(height: 50)
+                    .frame(height: Screen.isiPhoneXDevice ? 50 : 25)
                 
                 bannerSubview
                 
                 Spacer()
-                    .frame(height: 33)
+                    .frame(height: Screen.isiPhoneXDevice ? 33 : 25)
                 
                 buttonsSubview
                 
