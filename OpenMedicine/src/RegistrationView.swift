@@ -16,7 +16,6 @@ enum Gender: String, CaseIterable {
 struct RegistrationView: View {
     typealias Value = Layout.Registration
     
-    @State var isActive = false
     @State var isLoading = false
     @AppStorage("uuid") var uuid: String = ""
     /*
@@ -61,17 +60,6 @@ struct RegistrationView: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(.systemBackground)
-                .ignoresSafeArea()
-            
-            NavigationLink(
-                destination:
-                    Text(""),
-                isActive: $isActive
-            ) {
-                EmptyView()
-            }
-            
             if isLoading {
                 ZStack {
                     Color(.clear)
@@ -348,11 +336,11 @@ extension RegistrationView {
             case .success(let data):
                 print("[SUCCESS]: \(data.message)")
                 
-                // save uuid
-                self.uuid = uuid
-                
                 DispatchQueue.main.async {
-                    self.isActive.toggle()
+                    withAnimation(.easeInOut) {
+                        // save uuid
+                        self.uuid = uuid
+                    }
                 }
             }
         }
@@ -371,14 +359,14 @@ extension RegistrationView {
 //                print(String(describing: error))
                 registerUser()
             case .success(let data):
-                // save uuid
-                uuid = data.uuid
-                
                 // hide spinning
                 isLoading = false
-                
+
                 DispatchQueue.main.async {
-                    self.isActive.toggle()
+                    withAnimation(.easeInOut) {
+                        // save uuid
+                        self.uuid = data.uuid
+                    }
                 }
             }
         }
