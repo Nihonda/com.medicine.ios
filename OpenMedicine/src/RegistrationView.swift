@@ -16,6 +16,8 @@ enum Gender: String, CaseIterable {
 struct RegistrationView: View {
     typealias Value = Layout.Registration
     
+    @State var isActive = false
+    @State var isLoading = false
     @AppStorage("uuid") var uuid: String = ""
     /*
      States
@@ -60,7 +62,26 @@ struct RegistrationView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Color(.systemBackground)
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
+            
+            NavigationLink(
+                destination:
+                    Text(""),
+                isActive: $isActive
+            ) {
+                EmptyView()
+            }
+            
+            if isLoading {
+                ZStack {
+                    Color(.clear)
+                        .ignoresSafeArea()
+                    ProgressView("Загрузка")
+                }
+                .foregroundColor(Color.primary)
+                .cornerRadius(20)
+                .zIndex(1)
+            }
 
             VStack(alignment: .leading, spacing: Value.FIELDS_PADDING) {
                 Spacer()
@@ -162,6 +183,8 @@ struct RegistrationView: View {
                 }
             }
             .padding(.horizontal, Value.HORIZONTAL_PADDING)
+            .disabled(isLoading)
+            .blur(radius: isLoading ? 1 : 0)
         }
         .frame(width: Screen.width)
         .onAppear {
@@ -315,6 +338,9 @@ extension RegistrationView {
             "device_type=1"
         ].joined(separator: "&")
         Api.shared.fetch(of: SuccessModel.self, from: [url, params].joined(separator: "?"), isPost: true) { result in
+            // hide spinnning
+            isLoading = false
+
             switch result {
             case .failure(let error):
                 print("[FAILED]: " + [url, params].joined(separator: "?"))
@@ -324,11 +350,18 @@ extension RegistrationView {
                 
                 // save uuid
                 self.uuid = uuid
+                
+                DispatchQueue.main.async {
+                    self.isActive.toggle()
+                }
             }
         }
     }
     
     private func checkUserExists() {
+        // show spinning
+        isLoading = true
+        
         let url = K.API.CHECK_USER
         let params = "email=\(email.lowercased())"
         Api.shared.fetch(of: UUIDModel.self, from: [url, params].joined(separator: "?")) { result in
@@ -340,6 +373,13 @@ extension RegistrationView {
             case .success(let data):
                 // save uuid
                 uuid = data.uuid
+                
+                // hide spinning
+                isLoading = false
+                
+                DispatchQueue.main.async {
+                    self.isActive.toggle()
+                }
             }
         }
     }
