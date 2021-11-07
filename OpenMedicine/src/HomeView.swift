@@ -41,7 +41,7 @@ struct HomeView: View {
                 
                 Spacer()
             }
-            .padding()
+            .padding(.horizontal)
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(true)
@@ -53,6 +53,8 @@ struct HomeView: View {
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
+                .frame(width: Screen.width * 0.3)
+                .border(Color.red)
         }
     }
     
