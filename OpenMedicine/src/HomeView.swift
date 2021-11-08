@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var numberVM = NumberViewModel()
+    
     @State private var totalMedicine = "0"
     @State private var freewordBinding = ""
     
@@ -35,7 +37,7 @@ struct HomeView: View {
                 bannerSubview
                 
                 Spacer()
-                    .frame(height: Screen.isiPhoneXDevice ? 33 : 25)
+                    .frame(height: Screen.isiPhoneXDevice ? 50 : 25)
                 
                 buttonsSubview
                 
@@ -63,7 +65,7 @@ struct HomeView: View {
             Text("Всего")
                 .font(.system(size: 34))
                 .padding(.trailing, 30)
-            Text(totalMedicine)
+            Text("\(numberVM.numberModel?.numOf.count ?? 0)")
                 .font(.system(size: 48))
                 .foregroundColor(blueColor)
                 .padding(.trailing, 5)
