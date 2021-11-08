@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1807DAD12732DF72006073C2 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807DAD02732DF72006073C2 /* NumberViewModel.swift */; };
+		185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185172062736D4A100BC3AD4 /* SuccessModel.swift */; };
+		185172092736F47F00BC3AD4 /* UUIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185172082736F47F00BC3AD4 /* UUIDModel.swift */; };
+		1851720B2737B1D000BC3AD4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720A2737B1D000BC3AD4 /* HomeView.swift */; };
+		1851720D2737CD0000BC3AD4 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720C2737CD0000BC3AD4 /* ClearButton.swift */; };
+		1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720E2738271000BC3AD4 /* NumberModel.swift */; };
 		187AAACD26EDD95F00ABDFAF /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAACC26EDD95F00ABDFAF /* View+Extension.swift */; };
 		187AAACF26EDD99F00ABDFAF /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */; };
 		187AAAD126EE3C1D00ABDFAF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAAD026EE3C1D00ABDFAF /* Files.swift */; };
@@ -29,6 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1807DAD02732DF72006073C2 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
+		185172062736D4A100BC3AD4 /* SuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModel.swift; sourceTree = "<group>"; };
+		185172082736F47F00BC3AD4 /* UUIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDModel.swift; sourceTree = "<group>"; };
+		1851720A2737B1D000BC3AD4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1851720C2737CD0000BC3AD4 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
+		1851720E2738271000BC3AD4 /* NumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberModel.swift; sourceTree = "<group>"; };
 		187AAACC26EDD95F00ABDFAF /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		187AAAD026EE3C1D00ABDFAF /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
@@ -66,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */,
+				1807DAD02732DF72006073C2 /* NumberViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -74,6 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				18AEC12C26E66E340024B7CE /* CoateData.swift */,
+				1851720E2738271000BC3AD4 /* NumberModel.swift */,
+				185172062736D4A100BC3AD4 /* SuccessModel.swift */,
+				185172082736F47F00BC3AD4 /* UUIDModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -91,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				18AEC13326E67BF00024B7CE /* CoateView.swift */,
+				1851720A2737B1D000BC3AD4 /* HomeView.swift */,
 				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 			);
 			name = Views;
@@ -170,6 +187,7 @@
 		18F81F8D26E401490095A671 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				1851720C2737CD0000BC3AD4 /* ClearButton.swift */,
 				18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */,
 				187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */,
 			);
@@ -253,15 +271,21 @@
 				18DEF75A26D3F88400BA42F4 /* StartUpView.swift in Sources */,
 				18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */,
 				18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */,
+				1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */,
 				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
+				185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */,
 				18DEF75C26D3F9B900BA42F4 /* Screen.swift in Sources */,
 				187AAAD126EE3C1D00ABDFAF /* Files.swift in Sources */,
 				18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */,
 				18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */,
 				18DEF76026D4067D00BA42F4 /* Layout.swift in Sources */,
+				1807DAD12732DF72006073C2 /* NumberViewModel.swift in Sources */,
 				18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */,
+				1851720B2737B1D000BC3AD4 /* HomeView.swift in Sources */,
 				187AAAD426EE3E6900ABDFAF /* CoateViewModel.swift in Sources */,
+				1851720D2737CD0000BC3AD4 /* ClearButton.swift in Sources */,
 				187AAACD26EDD95F00ABDFAF /* View+Extension.swift in Sources */,
+				185172092736F47F00BC3AD4 /* UUIDModel.swift in Sources */,
 				18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
