@@ -11,6 +11,27 @@ struct FreewordView: View {
     @State private var freewordBinding = ""
     
     var body: some View {
+        VStack(spacing: 13) {
+            searchSubview
+            
+            ForEach(0..<10) { index in
+                HStack {
+                    Image(systemName: "timer")
+                    
+                    Text("Парацетамол")
+                        .font(.system(size: 16))
+
+                    Spacer()
+                }
+            }
+
+            Spacer()
+        }
+        .padding()
+
+    }
+    
+    private var searchSubview: some View {
         HStack(spacing: 10) {
             HStack(spacing: 0) {
                 Spacer()
@@ -47,7 +68,6 @@ struct FreewordView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Screen.width * 0.10)
         }
-        .padding()
     }
 }
 
