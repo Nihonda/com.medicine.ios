@@ -13,6 +13,8 @@ struct HomeView: View {
     @State private var totalMedicine = "0"
     @State private var freewordBinding = ""
     
+    @State private var isActiveFreeword = false
+    
     // variables
     private var blueColor = Color(.sRGB, red: 0, green: 0.64, blue: 1, opacity: 1)
     
@@ -82,11 +84,15 @@ struct HomeView: View {
         HStack(spacing: 0) {
             Spacer()
                 .frame(width: 40)
-            TextField("Поиск", text: $freewordBinding)
-                .disableAutocorrection(true)
-                .foregroundColor(freewordBinding == "" ? .gray : .primary)
-                .modifier(ClearButton(text: $freewordBinding))
-                .font(Font.system(size: 17))
+            NavigationLink(destination: FreewordView()) {
+                TextField("Поиск", text: $freewordBinding)
+                    .disableAutocorrection(true)
+                    .foregroundColor(freewordBinding == "" ? .gray : .primary)
+                    .modifier(ClearButton(text: $freewordBinding))
+                    .font(Font.system(size: 17))
+                    .multilineTextAlignment(.leading)
+                    .disabled(true)
+            }
             Button(action: {
                 print("works")
             }) {
