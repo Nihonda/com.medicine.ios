@@ -12,6 +12,8 @@ class Api {
     static let shared = Api()
     
     @Published var numberModel: NumberModel = NumberModel(numOf: NumberCount(count: 0))
+    @Published var drugListModel: DrugListModel? = nil
+    
     var cancellables = Set<AnyCancellable>()
     
     private init() {} // avoid creating object
@@ -61,6 +63,27 @@ class Api {
                 }
             } receiveValue: { [weak self] (returnedNumberModel) in
                 self?.numberModel = returnedNumberModel
+            }
+            .store(in: &cancellables)
+    }
+    
+    func downloadDrugListData(_ params: String = "") {
+        guard let url = URL(string: [K.API.DRUG_LIST, params].joined(separator: "?")) else { return }
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap(handleOutput)
+            .decode(type: DrugListModel.self, decoder: JSONDecoder())
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("Error downloading data. \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] (returnedDrugListModel) in
+                self?.drugListModel = returnedDrugListModel
             }
             .store(in: &cancellables)
     }
