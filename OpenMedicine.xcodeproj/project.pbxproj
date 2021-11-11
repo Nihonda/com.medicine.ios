@@ -22,6 +22,7 @@
 		18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13326E67BF00024B7CE /* CoateView.swift */; };
 		18AEC13726E67E060024B7CE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13626E67E060024B7CE /* Api.swift */; };
 		18CA0844273AD8EB0097BE62 /* FreewordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA0843273AD8EB0097BE62 /* FreewordView.swift */; };
+		18CA0848273D857D0097BE62 /* DrugListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA0847273D857D0097BE62 /* DrugListModel.swift */; };
 		18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */; };
 		18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6C26CC09190012C3A1 /* ContentView.swift */; };
 		18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D99F6E26CC091A0012C3A1 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		18AEC13326E67BF00024B7CE /* CoateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateView.swift; sourceTree = "<group>"; };
 		18AEC13626E67E060024B7CE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		18CA0843273AD8EB0097BE62 /* FreewordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreewordView.swift; sourceTree = "<group>"; };
+		18CA0847273D857D0097BE62 /* DrugListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugListModel.swift; sourceTree = "<group>"; };
 		18D99F6726CC09190012C3A1 /* OpenMedicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMedicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMedicineApp.swift; sourceTree = "<group>"; };
 		18D99F6C26CC09190012C3A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				1851720E2738271000BC3AD4 /* NumberModel.swift */,
 				185172062736D4A100BC3AD4 /* SuccessModel.swift */,
 				185172082736F47F00BC3AD4 /* UUIDModel.swift */,
+				18CA0847273D857D0097BE62 /* DrugListModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CA0848273D857D0097BE62 /* DrugListModel.swift in Sources */,
 				18CA0844273AD8EB0097BE62 /* FreewordView.swift in Sources */,
 				187AAACF26EDD99F00ABDFAF /* ViewDidLoadModifier.swift in Sources */,
 				18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */,
