@@ -30,6 +30,7 @@
 		18CA0855273DA7D70097BE62 /* ImageLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA0854273DA7D70097BE62 /* ImageLoadingViewModel.swift */; };
 		18CA08572740DC900097BE62 /* PhotoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA08562740DC900097BE62 /* PhotoCacheManager.swift */; };
 		18CA08592740DDA70097BE62 /* PhotoModelFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA08582740DDA70097BE62 /* PhotoModelFileManager.swift */; };
+		18CA085B27411A040097BE62 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA085A27411A040097BE62 /* String+Extension.swift */; };
 		18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */; };
 		18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6C26CC09190012C3A1 /* ContentView.swift */; };
 		18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D99F6E26CC091A0012C3A1 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		18CA0854273DA7D70097BE62 /* ImageLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingViewModel.swift; sourceTree = "<group>"; };
 		18CA08562740DC900097BE62 /* PhotoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCacheManager.swift; sourceTree = "<group>"; };
 		18CA08582740DDA70097BE62 /* PhotoModelFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModelFileManager.swift; sourceTree = "<group>"; };
+		18CA085A27411A040097BE62 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		18D99F6726CC09190012C3A1 /* OpenMedicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMedicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMedicineApp.swift; sourceTree = "<group>"; };
 		18D99F6C26CC09190012C3A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				18DEF76226D415C500BA42F4 /* Binding+Extension.swift */,
 				18CA084E273D94730097BE62 /* Optional+Extension.swift */,
 				187AAACC26EDD95F00ABDFAF /* View+Extension.swift */,
+				18CA085A27411A040097BE62 /* String+Extension.swift */,
 			);
 			name = Extentions;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */,
 				18CA0855273DA7D70097BE62 /* ImageLoadingViewModel.swift in Sources */,
 				18DEF75C26D3F9B900BA42F4 /* Screen.swift in Sources */,
+				18CA085B27411A040097BE62 /* String+Extension.swift in Sources */,
 				187AAAD126EE3C1D00ABDFAF /* Files.swift in Sources */,
 				18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */,
 				18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */,
