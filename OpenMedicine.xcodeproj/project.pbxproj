@@ -31,6 +31,7 @@
 		18CA08572740DC900097BE62 /* PhotoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA08562740DC900097BE62 /* PhotoCacheManager.swift */; };
 		18CA08592740DDA70097BE62 /* PhotoModelFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA08582740DDA70097BE62 /* PhotoModelFileManager.swift */; };
 		18CA085B27411A040097BE62 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA085A27411A040097BE62 /* String+Extension.swift */; };
+		18CA085E27414FB20097BE62 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 18CA085D27414FB10097BE62 /* CodeScanner */; };
 		18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */; };
 		18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6C26CC09190012C3A1 /* ContentView.swift */; };
 		18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D99F6E26CC091A0012C3A1 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CA085E27414FB20097BE62 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +242,9 @@
 			dependencies = (
 			);
 			name = OpenMedicine;
+			packageProductDependencies = (
+				18CA085D27414FB10097BE62 /* CodeScanner */,
+			);
 			productName = OpenMedicine;
 			productReference = 18D99F6726CC09190012C3A1 /* OpenMedicine.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +273,9 @@
 				Base,
 			);
 			mainGroup = 18D99F5E26CC09190012C3A1;
+			packageReferences = (
+				18CA085C27414FB10097BE62 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 18D99F6826CC09190012C3A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -460,9 +468,11 @@
 				DEVELOPMENT_TEAM = 4Z3M234D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Используется для сканирования баркодов";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -490,9 +500,11 @@
 				DEVELOPMENT_TEAM = 4Z3M234D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Используется для сканирования баркодов";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -531,6 +543,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18CA085C27414FB10097BE62 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18CA085D27414FB10097BE62 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18CA085C27414FB10097BE62 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18D99F5F26CC09190012C3A1 /* Project object */;
 }
