@@ -33,6 +33,7 @@
 		18CA085B27411A040097BE62 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA085A27411A040097BE62 /* String+Extension.swift */; };
 		18CA085E27414FB20097BE62 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 18CA085D27414FB10097BE62 /* CodeScanner */; };
 		18CA086627416C2D0097BE62 /* DrugDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA086527416C2D0097BE62 /* DrugDetailModel.swift */; };
+		18CA0868274187F80097BE62 /* DownloadingDrugDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CA0867274187F80097BE62 /* DownloadingDrugDetailViewModel.swift */; };
 		18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */; };
 		18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99F6C26CC09190012C3A1 /* ContentView.swift */; };
 		18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D99F6E26CC091A0012C3A1 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		18CA08582740DDA70097BE62 /* PhotoModelFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModelFileManager.swift; sourceTree = "<group>"; };
 		18CA085A27411A040097BE62 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		18CA086527416C2D0097BE62 /* DrugDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugDetailModel.swift; sourceTree = "<group>"; };
+		18CA0867274187F80097BE62 /* DownloadingDrugDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingDrugDetailViewModel.swift; sourceTree = "<group>"; };
 		18D99F6726CC09190012C3A1 /* OpenMedicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMedicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D99F6A26CC09190012C3A1 /* OpenMedicineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMedicineApp.swift; sourceTree = "<group>"; };
 		18D99F6C26CC09190012C3A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */,
 				1807DAD02732DF72006073C2 /* NumberViewModel.swift */,
+				18CA0867274187F80097BE62 /* DownloadingDrugDetailViewModel.swift */,
 				18CA0849273D86D90097BE62 /* DownloadingDrugListViewModel.swift */,
 				18CA0854273DA7D70097BE62 /* ImageLoadingViewModel.swift */,
 			);
@@ -113,11 +116,11 @@
 			isa = PBXGroup;
 			children = (
 				18AEC12C26E66E340024B7CE /* CoateData.swift */,
+				18CA086527416C2D0097BE62 /* DrugDetailModel.swift */,
+				18CA0847273D857D0097BE62 /* DrugListModel.swift */,
 				1851720E2738271000BC3AD4 /* NumberModel.swift */,
 				185172062736D4A100BC3AD4 /* SuccessModel.swift */,
 				185172082736F47F00BC3AD4 /* UUIDModel.swift */,
-				18CA0847273D857D0097BE62 /* DrugListModel.swift */,
-				18CA086527416C2D0097BE62 /* DrugDetailModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				18CA0853273DA70B0097BE62 /* DownloadingImageView.swift in Sources */,
 				18CA0844273AD8EB0097BE62 /* FreewordView.swift in Sources */,
 				187AAACF26EDD99F00ABDFAF /* ViewDidLoadModifier.swift in Sources */,
+				18CA0868274187F80097BE62 /* DownloadingDrugDetailViewModel.swift in Sources */,
 				18D99F6D26CC09190012C3A1 /* ContentView.swift in Sources */,
 				18AEC12F26E66FEA0024B7CE /* K.swift in Sources */,
 				18DEF75A26D3F88400BA42F4 /* StartUpView.swift in Sources */,
