@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FreewordView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @StateObject var vm = DownloadingDrugListViewModel()
     
     @State private var freewordBinding = ""
@@ -30,6 +32,22 @@ struct FreewordView: View {
 
             Spacer()
         }
+        .navigationBarTitle("Поиск", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading:
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    HStack {
+                        Image(systemName: "arrow.backward")
+                            .resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fit)
+                        Text("Назад")
+                    }
+                })
+        )
     }
     
     private var searchSubview: some View {
