@@ -68,7 +68,9 @@ class Api {
     }
     
     func downloadDrugListData(_ params: String = "") {
-        guard let url = URL(string: [K.API.DRUG_LIST, params].joined(separator: "?")) else { return }
+        let urlStr = [K.API.DRUG_LIST, params].joined(separator: "?").encodeUrl
+
+        guard let url = URL(string: urlStr) else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
