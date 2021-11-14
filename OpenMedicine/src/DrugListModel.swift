@@ -9,11 +9,14 @@ import Foundation
 
 // MARK: - DrugListModel
 struct DrugListModel: Codable {
-    let items: [Item]
+    let items: [DrugItem]
 }
 
 // MARK: - Item
-struct Item: Codable {
+struct DrugItem: Identifiable, Codable {
+    var id : String {
+        return barcode
+    }
     let atc: Atc?
     let barcode: String
     let expiryDate: String?
