@@ -5,6 +5,7 @@
 //  Created by Nurlan Nihonda on 7/11/21.
 //
 
+import CodeScanner
 import SwiftUI
 
 struct HomeView: View {
@@ -14,6 +15,8 @@ struct HomeView: View {
     @State private var freewordBinding = ""
     
     @State private var isActiveFreeword = false
+    
+    @State var isShowingScanner = false
     
     // variables
     private var blueColor = Color(.sRGB, red: 0, green: 0.64, blue: 1, opacity: 1)
@@ -49,6 +52,9 @@ struct HomeView: View {
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(true)
+        .sheet(isPresented: $isShowingScanner) {
+            CodeScannerView(codeTypes: [.qr, .ean13, .code128], simulatedData: "", completion: handleScan)
+        }
     }
     
     private var titleSubview: some View {
@@ -94,7 +100,7 @@ struct HomeView: View {
                     .disabled(true)
             }
             Button(action: {
-                print("works")
+                isShowingScanner = true
             }) {
                 Image(systemName: "camera")
                     .resizable()
@@ -207,6 +213,19 @@ struct HomeView_Previews: PreviewProvider {
                 
                 HomeView()
             }
+        }
+    }
+}
+
+extension HomeView {
+    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+        isShowingScanner = false
+        
+        switch result {
+        case .success(let code):
+            print("Found code: \(code)")
+        case .failure(let error):
+            print(error.localizedDescription)
         }
     }
 }
