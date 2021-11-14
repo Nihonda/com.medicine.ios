@@ -85,7 +85,8 @@ class Api {
                     print("Error downloading data. \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] (returnedDrugListModel) in
-                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
+//                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
+                self?.drugListItems = returnedDrugListModel.items
             }
             .store(in: &cancellables)
     }

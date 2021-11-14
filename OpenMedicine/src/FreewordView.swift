@@ -37,7 +37,7 @@ struct FreewordView: View {
             HStack(spacing: 0) {
                 Spacer()
                     .frame(width: 40)
-                TextField("Поиск", text: $freewordBinding)
+                TextField("Поиск", text: $freewordBinding.onChange(onFreewordChanged))
                     .disableAutocorrection(true)
                     .foregroundColor(freewordBinding == "" ? .gray : .primary)
                     .modifier(ClearButton(text: $freewordBinding))
@@ -82,6 +82,17 @@ struct FreewordView_Previews: PreviewProvider {
                 FreewordView()
             }
             .navigationBarHidden(true)
+        }
+    }
+}
+
+extension FreewordView {
+    private func onFreewordChanged(_ text: String) {
+        if text.count > 3 {
+            vm.downloadData("q=\(text)")
+        } else if text.count == 0 {
+            print("String is empty")
+            vm.clear()
         }
     }
 }

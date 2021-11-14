@@ -15,7 +15,9 @@ class DownloadingDrugListViewModel: ObservableObject {
     
     let dataService = Api.shared
     
-    init(_ params: String = "") {
+    init() {  }
+    
+    func downloadData(_ params: String = "") {
         dataService.downloadDrugListData(params)
         addSubscribers()
     }
@@ -26,5 +28,9 @@ class DownloadingDrugListViewModel: ObservableObject {
                 self?.drugListArray = returnedDrugListItems
             }
             .store(in: &cancellables)
+    }
+    
+    func clear() {
+        drugListArray.removeAll()
     }
 }
