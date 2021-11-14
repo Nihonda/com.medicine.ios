@@ -13,6 +13,7 @@ class Api {
     
     @Published var numberModel: NumberModel = NumberModel(numOf: NumberCount(count: 0))
     @Published var drugListItems: [DrugItem] = [DrugItem]()
+    @Published var drugDetailItem: DrugDetailModel? = nil
     
     var cancellables = Set<AnyCancellable>()
     
@@ -87,6 +88,30 @@ class Api {
             } receiveValue: { [weak self] (returnedDrugListModel) in
 //                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
                 self?.drugListItems = returnedDrugListModel.items
+            }
+            .store(in: &cancellables)
+    }
+    
+    func downloadDrugDetailData(barcode: String) {
+        let urlStr = [K.API.DRUG_DETAIL, barcode].joined(separator: "?").encodeUrl
+
+        guard let url = URL(string: urlStr) else { return }
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap(handleOutput)
+            .decode(type: DrugDetailModel.self, decoder: JSONDecoder())
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("Error downloading data. \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] (returnedDrugDetailModel) in
+//                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
+                self?.drugDetailItem = returnedDrugDetailModel
             }
             .store(in: &cancellables)
     }
