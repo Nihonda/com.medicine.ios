@@ -16,6 +16,8 @@ enum Gender: String, CaseIterable {
 struct RegistrationView: View {
     typealias Value = Layout.Registration
     
+    @State var isLoading = false
+    @AppStorage("uuid") var uuid: String = ""
     /*
      States
     */
@@ -58,8 +60,16 @@ struct RegistrationView: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(.systemBackground)
-                .edgesIgnoringSafeArea(.all)
+            if isLoading {
+                ZStack {
+                    Color(.clear)
+                        .ignoresSafeArea()
+                    ProgressView("Загрузка")
+                }
+                .foregroundColor(Color.primary)
+                .cornerRadius(20)
+                .zIndex(1)
+            }
 
             VStack(alignment: .leading, spacing: Value.FIELDS_PADDING) {
                 Spacer()
@@ -132,7 +142,8 @@ struct RegistrationView: View {
                         if isEmailError || isGenderError || isBirthdayError || isRegionError {
                             print("[ERROR] : \(String(describing: type(of: self)))")
                         } else {
-                            print("SUCCESS")
+                            // register device
+                            checkUserExists()
                         }
                     }) {
                         Text("Зарегистрироваться".uppercased())
@@ -160,6 +171,8 @@ struct RegistrationView: View {
                 }
             }
             .padding(.horizontal, Value.HORIZONTAL_PADDING)
+            .disabled(isLoading)
+            .blur(radius: isLoading ? 1 : 0)
         }
         .frame(width: Screen.width)
         .onAppear {
@@ -284,7 +297,7 @@ extension RegistrationView {
     private func birthdayIsEmpty(_ string: String) -> Bool {
         let result = !string.isEmpty
         if result {
-            gender = string
+            birthday = string
         }
         return result
     }
@@ -298,6 +311,65 @@ extension RegistrationView {
         
         let str = item.code.replacingOccurrences(of: " ", with: "")
         regionBinding = "\(str) - \(item.nm)"
+    }
+    
+    private func registerUser() {
+        guard let item = try? JSONDecoder().decode(CoateItem.self, from: coateItem) else { return }
+        let uuid = UUID().uuidString
+        let url = K.API.USER_API
+        let params = [
+            "uuid=\(uuid)",
+            "email=\(email.lowercased())",
+            "gender=\(gender == Gender.male.rawValue ? 1 : 2)",
+            "birthday=\(birthday)",
+            "coate_id=\(item.cd)",
+            "device_type=1"
+        ].joined(separator: "&")
+        Api.shared.fetch(of: SuccessModel.self, from: [url, params].joined(separator: "?"), isPost: true) { result in
+            // hide spinnning
+            isLoading = false
+
+            switch result {
+            case .failure(let error):
+                print("[FAILED]: " + [url, params].joined(separator: "?"))
+                print(String(describing: error))
+            case .success(let data):
+                print("[SUCCESS]: \(data.message)")
+                
+                DispatchQueue.main.async {
+                    withAnimation(.easeInOut) {
+                        // save uuid
+                        self.uuid = uuid
+                    }
+                }
+            }
+        }
+    }
+    
+    private func checkUserExists() {
+        // show spinning
+        isLoading = true
+        
+        let url = K.API.CHECK_USER
+        let params = "email=\(email.lowercased())"
+        Api.shared.fetch(of: UUIDModel.self, from: [url, params].joined(separator: "?")) { result in
+            switch result {
+            case .failure( _):
+                print("PARAMS: \(params) does not exist")
+//                print(String(describing: error))
+                registerUser()
+            case .success(let data):
+                // hide spinning
+                isLoading = false
+
+                DispatchQueue.main.async {
+                    withAnimation(.easeInOut) {
+                        // save uuid
+                        self.uuid = data.uuid
+                    }
+                }
+            }
+        }
     }
 }
 
