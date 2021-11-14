@@ -8,27 +8,28 @@
 import SwiftUI
 
 struct FreewordView: View {
+    @StateObject var vm = DownloadingDrugListViewModel()
+    
     @State private var freewordBinding = ""
     
     var body: some View {
         VStack(spacing: 13) {
             searchSubview
             
-            ForEach(0..<10) { index in
-                HStack {
-                    Image(systemName: "timer")
-                    
-                    Text("Парацетамол")
-                        .font(.system(size: 16))
-
-                    Spacer()
+            List {
+                ForEach(vm.drugListArray) { model in
+                    DrugListRow(model: model)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15).stroke(Color(.systemBackground), lineWidth: 2)
+                        )
                 }
+                .listRowBackground(Color(.secondarySystemBackground))
             }
 
             Spacer()
         }
-        .padding()
-
     }
     
     private var searchSubview: some View {
@@ -80,6 +81,7 @@ struct FreewordView_Previews: PreviewProvider {
                 
                 FreewordView()
             }
+            .navigationBarHidden(true)
         }
     }
 }
