@@ -12,7 +12,7 @@ class Api {
     static let shared = Api()
     
     @Published var numberModel: NumberModel = NumberModel(numOf: NumberCount(count: 0))
-    @Published var drugListModel: DrugListModel? = nil
+    @Published var drugListItems: [DrugItem] = [DrugItem]()
     
     var cancellables = Set<AnyCancellable>()
     
@@ -83,7 +83,7 @@ class Api {
                     print("Error downloading data. \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] (returnedDrugListModel) in
-                self?.drugListModel = returnedDrugListModel
+                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
             }
             .store(in: &cancellables)
     }

@@ -21,9 +21,9 @@ class DownloadingDrugListViewModel: ObservableObject {
     }
     
     func addSubscribers() {
-        dataService.$drugListModel
-            .sink { [weak self] (returnedDrugListModel) in
-                self?.drugListArray = returnedDrugListModel?.items ?? []
+        dataService.$drugListItems
+            .sink { [weak self] (returnedDrugListItems) in
+                self?.drugListArray = returnedDrugListItems
             }
             .store(in: &cancellables)
     }
