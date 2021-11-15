@@ -18,6 +18,7 @@ class DownloadingDrugDetailViewModel: ObservableObject {
     init() {  }
     
     func downloadData(barcode: String) {
+        let barcode = "barcode=\(barcode)"
         dataService.downloadDrugDetailData(barcode: barcode)
         addSubscribers()
     }
