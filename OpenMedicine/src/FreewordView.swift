@@ -22,7 +22,7 @@ struct FreewordView: View {
             List {
                 ForEach(vm.drugListModel.items.enumerated().map({ $0 }), id: \.element.id) { index, model in
                     NavigationLink(
-                        destination: Text(model.barcode)) {
+                        destination: DetailView(barcode: model.barcode)) {
                             DrugListRow(model: model, number: index)
                                 .padding()
                                 .overlay(
