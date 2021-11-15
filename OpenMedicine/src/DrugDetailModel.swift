@@ -11,7 +11,10 @@ struct DrugDetailModel: Codable {
     let detail: DetailItem
 }
 
-struct DetailItem: Codable {
+struct DetailItem: Identifiable, Codable {
+    var id: String {
+        return barcode
+    }
     let atc: Atc?
     let barcode: String
     let pricePerUnit: Double?
@@ -46,4 +49,8 @@ struct DetailItem: Codable {
         case tradeName          = "trade_name"
         case thumbName          = "thumb_name"
     }
+    
+//    func updateHoldings() -> DrugDetailModel {
+//
+//    }
 }
