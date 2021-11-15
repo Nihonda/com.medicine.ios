@@ -72,7 +72,6 @@ struct HomeView: View {
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Screen.width * 0.3)
-                .border(Color.red)
         }
     }
     
