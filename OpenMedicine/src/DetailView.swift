@@ -86,7 +86,13 @@ struct DetailView: View {
             Spacer()
             
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    let strNumber = "08008002626"
+                    let tel = "tel://"
+                    let formattedString = tel + strNumber
+                    guard let url = URL(string: formattedString) else { return }
+                    UIApplication.shared.open(url)
+                }) {
                     Text("Пожаловаться")
                         .foregroundColor(Color(.systemRed))
                 }
@@ -99,7 +105,9 @@ struct DetailView: View {
                         .fill(Color(red: 246/255, green: 251/255, blue: 255/255))
                 )
                 
-                Button(action: {}) {
+                Button(action: {
+                    
+                }) {
                     Text("Показать на карте")
                         .fontWeight(.semibold)
                         .foregroundColor(Color(.systemBackground))
