@@ -10,27 +10,46 @@ import Combine
 
 class DownloadingDrugListViewModel: ObservableObject {
     
-    @Published var drugListArray: [DrugItem] = []
+//    @Published var drugListArray: [DrugItem] = []
+    @Published var drugListModel: DrugListModel = DrugListModel(items: [], count: 0)
     var cancellables = Set<AnyCancellable>()
     
     let dataService = Api.shared
     
     init() {  }
     
-    func downloadData(_ params: String = "") {
-        dataService.downloadDrugListData(params)
-        addSubscribers()
+    func downloadData(freeword q: String = "", page: Int? = nil, pageSize: Int = 20, isAppend: Bool = true) {
+        var params: [String] = []
+        params.append("q=\(q)")
+        if let page = page {
+            params.append("page=\(page)")
+        }
+        params.append("step=\(pageSize)")
+        dataService.downloadDrugListData(params.joined(separator: "&"), isAppend: isAppend)
+        addSubscribers(isAppend: isAppend)
     }
     
-    func addSubscribers() {
+    func addSubscribers(isAppend: Bool) {
         dataService.$drugListItems
             .sink { [weak self] (returnedDrugListItems) in
-                self?.drugListArray = returnedDrugListItems
+                guard let self = self else { return }
+                if isAppend {
+                    self.drugListModel.items.appendDistinct(contentsOf: returnedDrugListItems, where: { (lhs, rhs) -> Bool in
+                        return lhs.barcode != rhs.barcode
+                }) // append(contentsOf: returnedDrugListItems)
+                } else {
+                    self.drugListModel.items = returnedDrugListItems
+                }
+//                print("TOTAL LIST ITEMS: \(self.drugListModel.items.count)")
             }
             .store(in: &cancellables)
     }
     
     func clear() {
-        drugListArray.removeAll()
+        dataService.clear()
+    }
+    
+    func shouldLoadData(id: Int) -> Bool {
+        return id == drugListModel.items.count - 1 // && dataService.drugListCount != id
     }
 }

@@ -23,6 +23,7 @@ class K {
         static let CHECK_USER   = K.HOST_API + "/api/mobile/v1/user"
         static let NUMBER_TOTAL = K.HOST_API + "/api/mobile/v1/drug/num-of"
         static let DRUG_LIST    = K.HOST_API + "/api/mobile/v1/drug-list"
+        static let DRUG_DETAIL  = K.HOST_API + "/api/mobile/v1/drug/detail"
     }
     
     class Source {

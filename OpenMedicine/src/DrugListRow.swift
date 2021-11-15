@@ -10,8 +10,12 @@ import SwiftUI
 struct DrugListRow: View {
     
     let model: DrugItem
+    let number: Int
     
     var body: some View {
+        VStack {
+//            Text("\(number)")
+            
         HStack {
             if let image = model.thumbName {
                 DownloadingImageView(url: image, key: model.id)
@@ -82,13 +86,14 @@ struct DrugListRow: View {
             }
             .frame(maxWidth: .infinity)
         }
+        }
         .font(.system(size: 13))
     }
 }
 
 struct DrugListRow_Previews: PreviewProvider {
     static var previews: some View {
-        DrugListRow(model: DrugItem(atc: Atc(cd: 1, nm: "Atc name", nmEng: "English name"), barcode: "1000000022222", expiryDate: "2021-11-15", fullName: "Medicine for everyone LTD", maker: Maker(cd: 1, nm: "Kyrgyzstan"), status: Maker(cd: 1, nm: "Approved"), issueDate: "2020-02-02", pricePerUnit: 500.00, medicineFormula: "Interesting medicine formula", thumbName: "https://storage.googleapis.com/openmedicine-323603.appspot.com/images/1890104300111.jpg"))
+        DrugListRow(model: DrugItem(atc: Atc(cd: 1, nm: "Atc name", nmEng: "English name"), barcode: "1000000022222", expiryDate: "2021-11-15", fullName: "Medicine for everyone LTD", maker: Maker(cd: 1, nm: "Kyrgyzstan"), status: Maker(cd: 1, nm: "Approved"), issueDate: "2020-02-02", pricePerUnit: 500.00, medicineFormula: "Interesting medicine formula", thumbName: "https://storage.googleapis.com/openmedicine-323603.appspot.com/images/1890104300111.jpg"), number: 1)
             .padding()
             .previewLayout(.sizeThatFits)
     }

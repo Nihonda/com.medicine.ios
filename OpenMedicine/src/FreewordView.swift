@@ -13,19 +13,30 @@ struct FreewordView: View {
     @StateObject var vm = DownloadingDrugListViewModel()
     
     @State private var freewordBinding = ""
+    @State private var currentPage: Int = 0
     
     var body: some View {
         VStack(spacing: 13) {
             searchSubview
             
             List {
-                ForEach(vm.drugListArray) { model in
-                    DrugListRow(model: model)
+                ForEach(vm.drugListModel.items.enumerated().map({ $0 }), id: \.element.id) { index, model in
+                    NavigationLink(
+                        destination: Text(model.barcode)) {
+                            DrugListRow(model: model, number: index)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 15).stroke(Color(.systemBackground), lineWidth: 2)
+                                )
+                                .onAppear {
+                                    print(index)
+                                    if vm.shouldLoadData(id: index) {
+                                        currentPage += 1
+                                        vm.downloadData(freeword: freewordBinding, page: currentPage)
+                                    }
+                                }
+                        }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 15).stroke(Color(.systemBackground), lineWidth: 2)
-                        )
                 }
                 .listRowBackground(Color(.secondarySystemBackground))
             }
@@ -107,7 +118,8 @@ struct FreewordView_Previews: PreviewProvider {
 extension FreewordView {
     private func onFreewordChanged(_ text: String) {
         if text.count > 3 {
-            vm.downloadData("q=\(text)")
+            vm.clear()
+            vm.downloadData(freeword: text, isAppend: false)
         } else if text.count == 0 {
             print("String is empty")
             vm.clear()
