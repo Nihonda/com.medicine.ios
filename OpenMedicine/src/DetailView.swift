@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @StateObject var vm = DownloadingDrugDetailViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     let barcode: String
     
@@ -55,6 +56,22 @@ struct DetailView: View {
         .onAppear {
             vm.downloadData(barcode: barcode)
         }
+        .navigationBarTitle("Подробно", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading:
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    HStack {
+                        Image(systemName: "arrow.backward")
+                            .resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fit)
+                        Text("Назад")
+                    }
+                })
+        )
     }
     
     private var shortIntro: some View {
