@@ -33,6 +33,7 @@ struct CoateView: View {
 
                                 Text(item.nm)
                                     .font(Font.system(size: 14))
+                                    .foregroundColor(Color.primary)
                                 
                                 Spacer()
                             }
