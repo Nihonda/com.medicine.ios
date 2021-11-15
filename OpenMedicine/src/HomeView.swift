@@ -14,15 +14,23 @@ struct HomeView: View {
     @State private var totalMedicine = "0"
     @State private var freewordBinding = ""
     
-    @State private var isActiveFreeword = false
-    
     @State var isShowingScanner = false
+    @State var isDetailActive: Bool = false
+    @State var barcode = ""
     
     // variables
     private var blueColor = Color(.sRGB, red: 0, green: 0.64, blue: 1, opacity: 1)
     
     var body: some View {
         ZStack {
+            NavigationLink(
+                destination:
+                    DetailView(barcode: barcode)
+                    .transition(.move(edge: .trailing)),
+                isActive: $isDetailActive) {
+                    EmptyView()
+                }
+
             VStack {
                 titleSubview
                 
@@ -224,6 +232,11 @@ extension HomeView {
         switch result {
         case .success(let code):
             print("Found code: \(code)")
+            self.barcode = code
+            
+            DispatchQueue.main.async {
+                self.isDetailActive = true
+            }
         case .failure(let error):
             print(error.localizedDescription)
         }
