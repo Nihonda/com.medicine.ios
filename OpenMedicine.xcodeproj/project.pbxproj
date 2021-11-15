@@ -45,6 +45,7 @@
 		18DEF76026D4067D00BA42F4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75F26D4067D00BA42F4 /* Layout.swift */; };
 		18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF76226D415C500BA42F4 /* Binding+Extension.swift */; };
 		18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */; };
+		18FFB8BF27423CF7002CF6FB /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		18DEF75F26D4067D00BA42F4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		18DEF76226D415C500BA42F4 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldArrow.swift; sourceTree = "<group>"; };
+		18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 		18DEF76126D4156E00BA42F4 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */,
 				18DEF76226D415C500BA42F4 /* Binding+Extension.swift */,
 				18CA084E273D94730097BE62 /* Optional+Extension.swift */,
 				187AAACC26EDD95F00ABDFAF /* View+Extension.swift */,
@@ -320,6 +323,7 @@
 				18D99F6B26CC09190012C3A1 /* OpenMedicineApp.swift in Sources */,
 				18CA08572740DC900097BE62 /* PhotoCacheManager.swift in Sources */,
 				18CA08592740DDA70097BE62 /* PhotoModelFileManager.swift in Sources */,
+				18FFB8BF27423CF7002CF6FB /* Array+Extension.swift in Sources */,
 				18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */,
 				1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */,
 				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
