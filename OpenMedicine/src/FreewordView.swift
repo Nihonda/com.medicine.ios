@@ -20,12 +20,15 @@ struct FreewordView: View {
             
             List {
                 ForEach(vm.drugListArray) { model in
-                    DrugListRow(model: model)
+                    NavigationLink(
+                        destination: Text(model.barcode)) {
+                            DrugListRow(model: model)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 15).stroke(Color(.systemBackground), lineWidth: 2)
+                                )
+                        }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 15).stroke(Color(.systemBackground), lineWidth: 2)
-                        )
                 }
                 .listRowBackground(Color(.secondarySystemBackground))
             }
