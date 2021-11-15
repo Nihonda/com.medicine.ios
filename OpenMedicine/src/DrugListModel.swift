@@ -9,7 +9,8 @@ import Foundation
 
 // MARK: - DrugListModel
 struct DrugListModel: Codable {
-    let items: [DrugItem]
+    var items: [DrugItem]
+    let count: Int
 }
 
 // MARK: - Item

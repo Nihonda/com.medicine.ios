@@ -13,6 +13,7 @@ class Api {
     
     @Published var numberModel: NumberModel = NumberModel(numOf: NumberCount(count: 0))
     @Published var drugListItems: [DrugItem] = [DrugItem]()
+    @Published var drugListCount: Int = 0
     @Published var drugDetailItem: DrugDetailModel? = nil
     
     var cancellables = Set<AnyCancellable>()
@@ -68,7 +69,7 @@ class Api {
             .store(in: &cancellables)
     }
     
-    func downloadDrugListData(_ params: String = "") {
+    func downloadDrugListData(_ params: String = "", isAppend: Bool = true) {
         let urlStr = [K.API.DRUG_LIST, params].joined(separator: "?").encodeUrl
 
         guard let url = URL(string: urlStr) else { return }
@@ -86,10 +87,19 @@ class Api {
                     print("Error downloading data. \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] (returnedDrugListModel) in
-//                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
-                self?.drugListItems = returnedDrugListModel.items
+                guard let self = self else { return }
+                if isAppend {
+                    self.drugListItems.append(contentsOf: returnedDrugListModel.items)
+                } else {
+                    self.drugListItems = returnedDrugListModel.items
+                    self.drugListCount = returnedDrugListModel.items.count
+                }
             }
             .store(in: &cancellables)
+    }
+    
+    func clear() {
+        drugListItems = []
     }
     
     func downloadDrugDetailData(barcode: String) {
