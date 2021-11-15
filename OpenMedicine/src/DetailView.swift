@@ -20,7 +20,7 @@ struct DetailView: View {
                 .zIndex(1)
             
             ScrollView {
-                VStack {
+                VStack(spacing: 20) {
                     if let name = vm.drugDetailItem?.detail.fullName {
                         Text(name)
                             .font(.system(size: 15))
@@ -184,13 +184,14 @@ struct DetailView: View {
             Text(body)
                 .font(.system(size: 13))
         }
+        .frame(maxWidth: .infinity)
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20).stroke(Color(.systemBackground), lineWidth: 1)
         )
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color(red: 246/255, green: 251/255, blue: 255/255))
+                .fill(Color(uiColor: UIColor.systemBackground))
         )
     }
 }
