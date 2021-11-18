@@ -8,6 +8,13 @@
 import CodeScanner
 import SwiftUI
 
+struct BannerModel: Identifiable {
+    let id = UUID().uuidString
+    let name: String?
+    let image: String?
+    let url: String
+}
+
 struct HomeView: View {
     @StateObject var numberVM = NumberViewModel()
     
@@ -17,6 +24,10 @@ struct HomeView: View {
     @State var isShowingScanner = false
     @State var isDetailActive: Bool = false
     @State var barcode = ""
+    
+    private var banners: [BannerModel] = [
+        BannerModel(name: "Департамент лекарственных средств и медицинских изделий при Министерстве здравоохранения Кыргызской Республики", image: "bnr_gerb", url: "http://pharm.kg")
+    ]
     
     // variables
     private var blueColor = Color(.sRGB, red: 0, green: 0.64, blue: 1, opacity: 1)
@@ -142,10 +153,19 @@ struct HomeView: View {
     private var bannerSubview: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
-                ForEach(0..<5) { index in
-                    HStack {
-                        Text("Баннер \(index + 1)")
-                            .font(.system(size: 28))
+                ForEach(banners) { model in
+                    HStack(spacing: 10) {
+                        if let image = model.image {
+                            Image(image)
+                                .resizable()
+                                .renderingMode(.original)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                        }
+                        if let text = model.name {
+                            Text(text)
+                                .font(.system(size: 20))
+                        }
                     }
                     .frame(height: 170)
                     .frame(width: Screen.width - 40)
