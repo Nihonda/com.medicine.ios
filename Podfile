@@ -6,5 +6,7 @@ target 'OpenMedicine' do
   use_frameworks!
 
   # Pods for OpenMedicine
+  
+  pod 'GoogleMaps'
 
 end
