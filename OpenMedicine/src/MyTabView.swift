@@ -15,19 +15,19 @@ struct MyTabView: View {
         TabView(selection: $selectedTab) {
             HomeView()
                 .tabItem {
-                    Image(systemName: "house.fill")
+                    Label("Главная", systemImage: "house.fill")
                 }
                 .tag(0)
             
             Text("Test")
                 .tabItem {
-                    Image(systemName: "star")
+                    Label("Избранное", systemImage: "star")
                 }
                 .tag(1)
             
             Text("Test")
                 .tabItem {
-                    Image(systemName: "book")
+                    Label("Настройки", systemImage: "book")
                 }
                 .tag(2)
         }
