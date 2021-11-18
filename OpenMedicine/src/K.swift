@@ -14,7 +14,7 @@ class K {
 #if DEBUG
     static let HOST_API           = HTTP + "192.168.1.103:8081" // localhost
 #else
-    static let HOST_API           = HTTP + "34.88.132.245"
+    static let HOST_API           = HTTP + "34.88.132.245:81"
 #endif
     
     class API {
