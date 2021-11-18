@@ -28,7 +28,7 @@ struct ContentView: View {
                         RegistrationView()
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                     } else {
-                        HomeView()
+                        MyTabView()
                     }
                 } else {
                     StartUpView()

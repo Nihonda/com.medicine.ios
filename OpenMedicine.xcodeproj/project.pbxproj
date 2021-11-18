@@ -44,6 +44,7 @@
 		18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */; };
 		18DEF76026D4067D00BA42F4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75F26D4067D00BA42F4 /* Layout.swift */; };
 		18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF76226D415C500BA42F4 /* Binding+Extension.swift */; };
+		18EE216B2746407E00888104 /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE216A2746407E00888104 /* MyTabView.swift */; };
 		18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */; };
 		18FFB8BF27423CF7002CF6FB /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */; };
 		18FFB8C127425155002CF6FB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFB8C027425155002CF6FB /* DetailView.swift */; };
@@ -87,6 +88,7 @@
 		18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		18DEF75F26D4067D00BA42F4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		18DEF76226D415C500BA42F4 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		18EE216A2746407E00888104 /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
 		18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldArrow.swift; sourceTree = "<group>"; };
 		18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		18FFB8C027425155002CF6FB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		18D57FEA271865DD005C162D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18EE21692746406F00888104 /* TabView */,
 				18AEC13326E67BF00024B7CE /* CoateView.swift */,
 				18CA0850273DA22F0097BE62 /* DrugListRow.swift */,
 				18FFB8C027425155002CF6FB /* DetailView.swift */,
@@ -226,6 +229,14 @@
 				18CA085A27411A040097BE62 /* String+Extension.swift */,
 			);
 			name = Extentions;
+			sourceTree = "<group>";
+		};
+		18EE21692746406F00888104 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				18EE216A2746407E00888104 /* MyTabView.swift */,
+			);
+			name = TabView;
 			sourceTree = "<group>";
 		};
 		18F81F8D26E401490095A671 /* Modifiers */ = {
@@ -331,6 +342,7 @@
 				18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */,
 				1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */,
 				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
+				18EE216B2746407E00888104 /* MyTabView.swift in Sources */,
 				185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */,
 				18CA086627416C2D0097BE62 /* DrugDetailModel.swift in Sources */,
 				18CA0855273DA7D70097BE62 /* ImageLoadingViewModel.swift in Sources */,
