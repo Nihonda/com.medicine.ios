@@ -13,6 +13,8 @@ struct BannerModel: Identifiable {
     let name: String?
     let image: String?
     let url: String
+    let siteName: String
+    let backgroundColor: Gradient?
 }
 
 struct HomeView: View {
@@ -25,8 +27,17 @@ struct HomeView: View {
     @State var isDetailActive: Bool = false
     @State var barcode = ""
     
+    @State private var showingAlert = false
+    @State private var siteName     = ""
+    @State private var siteUrl      = ""
     private var banners: [BannerModel] = [
-        BannerModel(name: "Департамент лекарственных средств и медицинских изделий при Министерстве здравоохранения Кыргызской Республики", image: "bnr_gerb", url: "http://pharm.kg")
+        BannerModel(
+            name: "Департамент лекарственных средств и медицинских изделий при Министерстве здравоохранения Кыргызской Республики",
+            image: "bnr_gerb",
+            url: "http://pharm.kg",
+            siteName: "ДЛСиМИ",
+            backgroundColor: Gradient(colors: [Color(red: 3/255, green: 163/255, blue: 1), Color.white])
+        )
     ]
     
     // variables
@@ -73,6 +84,17 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .sheet(isPresented: $isShowingScanner) {
             CodeScannerView(codeTypes: [.qr, .ean13, .code128], simulatedData: "", completion: handleScan)
+        }
+        .alert("Перейти на сайт: \(siteName)", isPresented: $showingAlert) {
+            Button(action: {
+                if let url = URL(string: siteUrl) {
+                    UIApplication.shared.open(url)
+                }
+            }, label: {
+                Text("Да")
+            })
+            
+            Button(action: {}, label: {Text("Нет")})
         }
     }
     
@@ -169,11 +191,22 @@ struct HomeView: View {
                     }
                     .frame(height: 170)
                     .frame(width: Screen.width - 40)
-                    .background(Color(.systemGray3))
+                    .background(
+                        LinearGradient(
+                            gradient: model.backgroundColor ?? Gradient(colors: [Color.white, Color.white]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20).stroke(Color(.systemGray), lineWidth: 1)
                     )
+                    .onTapGesture {
+                        siteName = model.siteName
+                        siteUrl = model.url
+                        
+                        withAnimation(.easeInOut) {
+                            showingAlert = true
+                        }
+                    }
                 }
             }
         }
