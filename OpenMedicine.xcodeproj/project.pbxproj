@@ -18,6 +18,8 @@
 		187AAAD126EE3C1D00ABDFAF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAAD026EE3C1D00ABDFAF /* Files.swift */; };
 		187AAAD426EE3E6900ABDFAF /* CoateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */; };
 		1890BA7B2746CAB700E04A22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1890BA7A2746CAB700E04A22 /* Podfile */; };
+		1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7C2746CD3000E04A22 /* MapView.swift */; };
+		1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7E2748FED400E04A22 /* MapViewModel.swift */; };
 		18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12C26E66E340024B7CE /* CoateData.swift */; };
 		18AEC12F26E66FEA0024B7CE /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12E26E66FEA0024B7CE /* K.swift */; };
 		18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13326E67BF00024B7CE /* CoateView.swift */; };
@@ -63,6 +65,8 @@
 		187AAAD026EE3C1D00ABDFAF /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateViewModel.swift; sourceTree = "<group>"; };
 		1890BA7A2746CAB700E04A22 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		1890BA7C2746CD3000E04A22 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1890BA7E2748FED400E04A22 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		18AEC12C26E66E340024B7CE /* CoateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateData.swift; sourceTree = "<group>"; };
 		18AEC12E26E66FEA0024B7CE /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		18AEC13326E67BF00024B7CE /* CoateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateView.swift; sourceTree = "<group>"; };
@@ -112,10 +116,11 @@
 			isa = PBXGroup;
 			children = (
 				187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */,
-				1807DAD02732DF72006073C2 /* NumberViewModel.swift */,
 				18CA0867274187F80097BE62 /* DownloadingDrugDetailViewModel.swift */,
 				18CA0849273D86D90097BE62 /* DownloadingDrugListViewModel.swift */,
 				18CA0854273DA7D70097BE62 /* ImageLoadingViewModel.swift */,
+				1890BA7E2748FED400E04A22 /* MapViewModel.swift */,
+				1807DAD02732DF72006073C2 /* NumberViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				18CA0852273DA70B0097BE62 /* DownloadingImageView.swift */,
 				18CA0843273AD8EB0097BE62 /* FreewordView.swift */,
 				1851720A2737B1D000BC3AD4 /* HomeView.swift */,
+				1890BA7C2746CD3000E04A22 /* MapView.swift */,
 				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 			);
 			name = Views;
@@ -345,7 +351,9 @@
 				18FFB8BF27423CF7002CF6FB /* Array+Extension.swift in Sources */,
 				18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */,
 				1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */,
+				1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */,
 				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
+				1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */,
 				18EE216B2746407E00888104 /* MyTabView.swift in Sources */,
 				185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */,
 				18CA086627416C2D0097BE62 /* DrugDetailModel.swift in Sources */,
@@ -502,6 +510,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Используется для сканирования баркодов";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Приложение запрашивает локацию, чтобы предоставить информацию о ближайшей аптеке.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -535,6 +544,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Используется для сканирования баркодов";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Приложение запрашивает локацию, чтобы предоставить информацию о ближайшей аптеке.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
