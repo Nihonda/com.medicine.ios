@@ -6,16 +6,20 @@
 //
 
 import MapKit
+import Combine
 
 enum MapDetails {
     static let startingLocation = CLLocationCoordinate2D(latitude: 40.0575553, longitude: 70.788302)
-    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
 }
 
 class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
-    let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
+    
+    let dataService = Api.shared
+    @Published var placeList = [DrugPlaceModel]()
+    var cancellable: AnyCancellable?
     
     func checkIfLocationServicesEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -39,7 +43,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             print("You denied user location. Go to Settings to allow it")
         case .authorizedAlways, .authorizedWhenInUse:
             guard let location = locationManager.location else { return }
-            region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            region = MKCoordinateRegion(center: location.coordinate, span: MapDetails.defaultSpan)
         @unknown default:
             break
         }
@@ -47,5 +51,19 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
+    }
+    
+    func downloadData(lat: Double, long: Double, dist: Double) {
+        dataService.downloadDrugPlaceData(lat: lat, long: long, dist: dist)
+        addSubscribers()
+    }
+    
+    private func addSubscribers() {
+        cancellable = dataService.$drugPlaceList
+            .sink { [weak self] (returnedPlaceList) in
+                guard let self = self else { return }
+                self.placeList = returnedPlaceList
+                self.cancellable?.cancel()
+            }
     }
 }
