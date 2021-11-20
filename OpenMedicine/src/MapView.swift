@@ -13,10 +13,28 @@ struct MapView: View {
     
     
     var body: some View {
-        Map(coordinateRegion: $mapViewModel.region, showsUserLocation: true)
+        Map(coordinateRegion: $mapViewModel.region, annotationItems: mapViewModel.placeList) { place in
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.latitude ?? 0, longitude: place.longitude ?? 0)) {
+                HStack {
+                    Image(systemName: "mappin.and.ellipse")
+                        .foregroundColor(Color.blue)
+                    Text(place.storeName)
+                        .fixedSize()
+                }
+                .padding(10)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                .overlay(
+                    Image(systemName: "arrowtriangle.down.fill")
+                        .foregroundColor(.white)
+                        .offset(y: 10)
+                    , alignment: .bottom)
+            }
+        }
             .accentColor(Color(.systemPink))
             .onAppear {
                 mapViewModel.checkIfLocationServicesEnabled()
+                mapViewModel.downloadData(lat: 42.8834816, long: 74.5865216, dist: 1)
             }
     }
 }
