@@ -15,15 +15,15 @@ struct DrugPlaceModel: Identifiable, Codable {
     let activity: String
     let regionName: String
     let regionId: Int
-    let localityName: String
-    let localityId: Int
-    let sublocalityName: String
-    let sublocalityId: Int
+    let localityName: String?
+    let localityId: Int?
+    let sublocalityName: String?
+    let sublocalityId: Int?
     let address: String
-    let latitude: Double
-    let longitude: Double
-    let tel: String
-    let distance: Double
+    let latitude: Double?
+    let longitude: Double?
+    let tel: String?
+    let distance: Double?
     
     enum CodingKeys: String, CodingKey {
         case id
