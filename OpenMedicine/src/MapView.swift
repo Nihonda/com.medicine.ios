@@ -22,11 +22,11 @@ struct MapView: View {
                         .fixedSize()
                 }
                 .padding(10)
-                .background(Color.white)
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                 .overlay(
                     Image(systemName: "arrowtriangle.down.fill")
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(.systemBackground))
                         .offset(y: 10)
                     , alignment: .bottom)
             }
