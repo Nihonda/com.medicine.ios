@@ -21,6 +21,7 @@
 		1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7C2746CD3000E04A22 /* MapView.swift */; };
 		1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7E2748FED400E04A22 /* MapViewModel.swift */; };
 		1890BA81274911DF00E04A22 /* DrugPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */; };
+		1890BA83274940D500E04A22 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA82274940D500E04A22 /* NetworkingManager.swift */; };
 		18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12C26E66E340024B7CE /* CoateData.swift */; };
 		18AEC12F26E66FEA0024B7CE /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12E26E66FEA0024B7CE /* K.swift */; };
 		18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13326E67BF00024B7CE /* CoateView.swift */; };
@@ -69,6 +70,7 @@
 		1890BA7C2746CD3000E04A22 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1890BA7E2748FED400E04A22 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlaceModel.swift; sourceTree = "<group>"; };
+		1890BA82274940D500E04A22 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		18AEC12C26E66E340024B7CE /* CoateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateData.swift; sourceTree = "<group>"; };
 		18AEC12E26E66FEA0024B7CE /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		18AEC13326E67BF00024B7CE /* CoateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateView.swift; sourceTree = "<group>"; };
@@ -141,15 +143,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		18AEC13526E67DF20024B7CE /* Helper */ = {
+		18AEC13526E67DF20024B7CE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				18AEC13626E67E060024B7CE /* Api.swift */,
+				1890BA82274940D500E04A22 /* NetworkingManager.swift */,
 				18CA08562740DC900097BE62 /* PhotoCacheManager.swift */,
 				18CA08582740DDA70097BE62 /* PhotoModelFileManager.swift */,
 				187AAAD026EE3C1D00ABDFAF /* Files.swift */,
 			);
-			name = Helper;
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		18D57FEA271865DD005C162D /* Views */ = {
@@ -220,7 +223,7 @@
 				18AEC12B26E66E0E0024B7CE /* Models */,
 				187AAAD226EE3E3B00ABDFAF /* ViewModels */,
 				18D57FEA271865DD005C162D /* Views */,
-				18AEC13526E67DF20024B7CE /* Helper */,
+				18AEC13526E67DF20024B7CE /* Utility */,
 				18F81F8D26E401490095A671 /* Modifiers */,
 				18DEF76126D4156E00BA42F4 /* Extentions */,
 				18DEF75926D3F88400BA42F4 /* StartUpView.swift */,
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CA0848273D857D0097BE62 /* DrugListModel.swift in Sources */,
+				1890BA83274940D500E04A22 /* NetworkingManager.swift in Sources */,
 				18FFB8C127425155002CF6FB /* DetailView.swift in Sources */,
 				18CA0853273DA70B0097BE62 /* DownloadingImageView.swift in Sources */,
 				18CA0844273AD8EB0097BE62 /* FreewordView.swift in Sources */,
