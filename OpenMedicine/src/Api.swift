@@ -15,10 +15,12 @@ class Api {
     @Published var drugListItems: [DrugItem] = [DrugItem]()
     @Published var drugListCount: Int = 0
     @Published var drugDetailItem: DrugDetailModel? = nil
+    @Published var drugPlaceList: [DrugPlaceModel] = [DrugPlaceModel]()
     
     var numberSubscription: AnyCancellable?
     var drugListSubscription: AnyCancellable?
     var drugDetailSubscription: AnyCancellable?
+    var drugPlaceSubscription: AnyCancellable?
     
     private init() {} // avoid creating object
     
@@ -95,6 +97,18 @@ class Api {
             .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedDrugDetailModel) in
                 self?.drugDetailItem = returnedDrugDetailModel
                 self?.drugDetailSubscription?.cancel()
+            })
+    }
+    
+    func downloadDrugPlaceData(lat: Double, long: Double, dist: Double) {
+        let params = ["lat=\(lat)", "long=\(long)", "dis=\(dist)"].joined(separator: "&")
+        let urlStr = "\(K.API.PLACE_LIST)?\(params)"
+        guard let url = URL(string: urlStr) else { return }
+        drugPlaceSubscription = NetworkingManager.download(url: url)
+            .decode(type: [DrugPlaceModel].self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedPlaceList) in
+                self?.drugPlaceList = returnedPlaceList
+                self?.drugPlaceSubscription?.cancel()
             })
     }
 }
