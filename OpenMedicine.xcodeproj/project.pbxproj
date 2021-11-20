@@ -20,6 +20,7 @@
 		1890BA7B2746CAB700E04A22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1890BA7A2746CAB700E04A22 /* Podfile */; };
 		1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7C2746CD3000E04A22 /* MapView.swift */; };
 		1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7E2748FED400E04A22 /* MapViewModel.swift */; };
+		1890BA81274911DF00E04A22 /* DrugPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */; };
 		18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12C26E66E340024B7CE /* CoateData.swift */; };
 		18AEC12F26E66FEA0024B7CE /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12E26E66FEA0024B7CE /* K.swift */; };
 		18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13326E67BF00024B7CE /* CoateView.swift */; };
@@ -67,6 +68,7 @@
 		1890BA7A2746CAB700E04A22 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		1890BA7C2746CD3000E04A22 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1890BA7E2748FED400E04A22 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlaceModel.swift; sourceTree = "<group>"; };
 		18AEC12C26E66E340024B7CE /* CoateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateData.swift; sourceTree = "<group>"; };
 		18AEC12E26E66FEA0024B7CE /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		18AEC13326E67BF00024B7CE /* CoateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				1851720E2738271000BC3AD4 /* NumberModel.swift */,
 				185172062736D4A100BC3AD4 /* SuccessModel.swift */,
 				185172082736F47F00BC3AD4 /* UUIDModel.swift */,
+				1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */,
 				1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */,
 				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
+				1890BA81274911DF00E04A22 /* DrugPlaceModel.swift in Sources */,
 				1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */,
 				18EE216B2746407E00888104 /* MyTabView.swift in Sources */,
 				185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */,
