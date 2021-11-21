@@ -60,9 +60,17 @@ struct MapView: View {
             
             VStack(alignment: .leading, spacing: 10) {
                 if let place = pinPlace {
-                    Text(place.storeName)
-                        .font(.system(size: 14))
-                        .fontWeight(.bold)
+                    HStack {
+                        Text(place.storeName)
+                            .font(.system(size: 14))
+                            .fontWeight(.bold)
+                        Spacer()
+                        Image(systemName: "xmark")
+                            .padding()
+                            .onTapGesture {
+                                isShowingPinDetails = false
+                            }
+                    }
                     
                     Text(place.activity)
                     
