@@ -105,21 +105,19 @@ struct DetailView: View {
                         .fill(Color(red: 246/255, green: 251/255, blue: 255/255))
                 )
                 
-                Button(action: {
-                    
-                }) {
+                NavigationLink(destination: MapView()) {
                     Text("Показать на карте")
                         .fontWeight(.semibold)
                         .foregroundColor(Color(.systemBackground))
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20).stroke(Color(.systemBackground), lineWidth: 2)
+                        )
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color(red: 0, green: 164/255, blue: 255/255))
+                        )
                 }
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20).stroke(Color(.systemBackground), lineWidth: 2)
-                )
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color(red: 0, green: 164/255, blue: 255/255))
-                )
             }
             .padding(.horizontal, 20)
         }
