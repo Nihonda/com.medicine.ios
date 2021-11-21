@@ -18,12 +18,13 @@ struct MapView: View {
             Map(coordinateRegion: $mapViewModel.region, annotationItems: mapViewModel.placeList) { place in
                 MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.latitude ?? 0, longitude: place.longitude ?? 0)) {
                     HStack {
-                        Image(systemName: "mappin.and.ellipse")
+                        Image(systemName: "pills.fill")
                             .foregroundColor(Color.blue)
                         Text(place.storeName)
                             .fixedSize()
                     }
                     .padding(10)
+                    .font(.system(size: 12))
                     .background(Color(.systemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                     .overlay(
