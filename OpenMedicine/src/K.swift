@@ -14,7 +14,7 @@ class K {
 #if DEBUG
     static let HOST_API           = HTTP + "192.168.1.103:8081" // localhost
 #else
-    static let HOST_API           = HTTP + "34.88.132.245"
+    static let HOST_API           = HTTP + "34.88.132.245:81"
 #endif
     
     class API {
@@ -24,6 +24,7 @@ class K {
         static let NUMBER_TOTAL = K.HOST_API + "/api/mobile/v1/drug/num-of"
         static let DRUG_LIST    = K.HOST_API + "/api/mobile/v1/drug-list"
         static let DRUG_DETAIL  = K.HOST_API + "/api/mobile/v1/drug/detail"
+        static let PLACE_LIST   = K.HOST_API + "/api/mobile/v1/drugstore"
     }
     
     class Source {

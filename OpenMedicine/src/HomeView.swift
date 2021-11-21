@@ -8,6 +8,15 @@
 import CodeScanner
 import SwiftUI
 
+struct BannerModel: Identifiable {
+    let id = UUID().uuidString
+    let name: String?
+    let image: String?
+    let url: String
+    let siteName: String
+    let backgroundColor: Gradient?
+}
+
 struct HomeView: View {
     @StateObject var numberVM = NumberViewModel()
     
@@ -17,6 +26,19 @@ struct HomeView: View {
     @State var isShowingScanner = false
     @State var isDetailActive: Bool = false
     @State var barcode = ""
+    
+    @State private var showingAlert = false
+    @State private var siteName     = ""
+    @State private var siteUrl      = ""
+    private var banners: [BannerModel] = [
+        BannerModel(
+            name: "Департамент лекарственных средств и медицинских изделий при Министерстве здравоохранения Кыргызской Республики",
+            image: "bnr_gerb",
+            url: "http://pharm.kg",
+            siteName: "ДЛСиМИ",
+            backgroundColor: Gradient(colors: [Color(red: 3/255, green: 163/255, blue: 1), Color.white])
+        )
+    ]
     
     // variables
     private var blueColor = Color(.sRGB, red: 0, green: 0.64, blue: 1, opacity: 1)
@@ -62,6 +84,17 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .sheet(isPresented: $isShowingScanner) {
             CodeScannerView(codeTypes: [.qr, .ean13, .code128], simulatedData: "", completion: handleScan)
+        }
+        .alert("Перейти на сайт: \(siteName)", isPresented: $showingAlert) {
+            Button(action: {
+                if let url = URL(string: siteUrl) {
+                    UIApplication.shared.open(url)
+                }
+            }, label: {
+                Text("Да")
+            })
+            
+            Button(action: {}, label: {Text("Нет")})
         }
     }
     
@@ -142,18 +175,38 @@ struct HomeView: View {
     private var bannerSubview: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
-                ForEach(0..<5) { index in
-                    HStack {
-                        Text("Баннер \(index + 1)")
-                            .font(.system(size: 28))
+                ForEach(banners) { model in
+                    HStack(spacing: 10) {
+                        if let image = model.image {
+                            Image(image)
+                                .resizable()
+                                .renderingMode(.original)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                        }
+                        if let text = model.name {
+                            Text(text)
+                                .font(.system(size: 20))
+                        }
                     }
                     .frame(height: 170)
                     .frame(width: Screen.width - 40)
-                    .background(Color(.systemGray3))
+                    .background(
+                        LinearGradient(
+                            gradient: model.backgroundColor ?? Gradient(colors: [Color.white, Color.white]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20).stroke(Color(.systemGray), lineWidth: 1)
                     )
+                    .onTapGesture {
+                        siteName = model.siteName
+                        siteUrl = model.url
+                        
+                        withAnimation(.easeInOut) {
+                            showingAlert = true
+                        }
+                    }
                 }
             }
         }
@@ -161,9 +214,7 @@ struct HomeView: View {
     
     private var buttonsSubview: some View {
         HStack {
-            Button(action: {
-                
-            }) {
+            NavigationLink(destination: MapView()) {
                 VStack {
                     Image(systemName: "mappin.and.ellipse")
                         .resizable()
@@ -175,12 +226,12 @@ struct HomeView: View {
                         .foregroundColor(Color.black)
                 }
                 .frame(width: 160, height: 160)
+                .background(Color.white)
+                .cornerRadius(25)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 25).stroke(Color(.systemGray), lineWidth: 1)
+                )
             }
-            .background(Color.white)
-            .cornerRadius(25)
-            .overlay(
-                RoundedRectangle(cornerRadius: 25).stroke(Color(.systemGray), lineWidth: 1)
-            )
             
             Spacer()
             

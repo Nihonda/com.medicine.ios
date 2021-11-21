@@ -15,8 +15,12 @@ class Api {
     @Published var drugListItems: [DrugItem] = [DrugItem]()
     @Published var drugListCount: Int = 0
     @Published var drugDetailItem: DrugDetailModel? = nil
+    @Published var drugPlaceList: [DrugPlaceModel] = [DrugPlaceModel]()
     
-    var cancellables = Set<AnyCancellable>()
+    var numberSubscription: AnyCancellable?
+    var drugListSubscription: AnyCancellable?
+    var drugDetailSubscription: AnyCancellable?
+    var drugPlaceSubscription: AnyCancellable?
     
     private init() {} // avoid creating object
     
@@ -51,22 +55,13 @@ class Api {
     // FROM https://www.youtube.com/watch?v=fmVuOu8XOvQ&list=PLwvDm4VfkdpiagxAXCT33Rkwnc5IVhTar&index=29
     func downloadNumberData() {
         guard let url = URL(string: K.API.NUMBER_TOTAL) else { return }
-        URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.main)
-            .tryMap(handleOutput)
+        
+        numberSubscription = NetworkingManager.download(url: url)
             .decode(type: NumberModel.self, decoder: JSONDecoder())
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Error downloading data. \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] (returnedNumberModel) in
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedNumberModel) in
                 self?.numberModel = returnedNumberModel
-            }
-            .store(in: &cancellables)
+                self?.numberSubscription?.cancel()
+            })
     }
     
     func downloadDrugListData(_ params: String = "", isAppend: Bool = true) {
@@ -74,19 +69,9 @@ class Api {
 
         guard let url = URL(string: urlStr) else { return }
         
-        URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.main)
-            .tryMap(handleOutput)
+        drugListSubscription = NetworkingManager.download(url: url)
             .decode(type: DrugListModel.self, decoder: JSONDecoder())
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Error downloading data. \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] (returnedDrugListModel) in
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedDrugListModel) in
                 guard let self = self else { return }
                 if isAppend {
                     self.drugListItems.append(contentsOf: returnedDrugListModel.items)
@@ -94,8 +79,8 @@ class Api {
                     self.drugListItems = returnedDrugListModel.items
                     self.drugListCount = returnedDrugListModel.items.count
                 }
-            }
-            .store(in: &cancellables)
+                self.drugListSubscription?.cancel()
+            })
     }
     
     func clear() {
@@ -107,31 +92,23 @@ class Api {
 
         guard let url = URL(string: urlStr) else { return }
         
-        URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.main)
-            .tryMap(handleOutput)
+        drugDetailSubscription = NetworkingManager.download(url: url)
             .decode(type: DrugDetailModel.self, decoder: JSONDecoder())
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Error downloading data. \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] (returnedDrugDetailModel) in
-//                self?.drugListItems.append(contentsOf: returnedDrugListModel.items)
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedDrugDetailModel) in
                 self?.drugDetailItem = returnedDrugDetailModel
-            }
-            .store(in: &cancellables)
+                self?.drugDetailSubscription?.cancel()
+            })
     }
     
-    private func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
-        guard
-            let response = output.response as? HTTPURLResponse,
-            response.statusCode >= 200 && response.statusCode <= 300 else {
-                throw URLError(.badServerResponse)
-            }
-        return output.data
+    func downloadDrugPlaceData(lat: Double, long: Double, dist: Double) {
+        let params = ["lat=\(lat)", "long=\(long)", "dis=\(dist)"].joined(separator: "&")
+        let urlStr = "\(K.API.PLACE_LIST)?\(params)"
+        guard let url = URL(string: urlStr) else { return }
+        drugPlaceSubscription = NetworkingManager.download(url: url)
+            .decode(type: [DrugPlaceModel].self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedPlaceList) in
+                self?.drugPlaceList = returnedPlaceList
+                self?.drugPlaceSubscription?.cancel()
+            })
     }
 }

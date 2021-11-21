@@ -17,6 +17,11 @@
 		187AAACF26EDD99F00ABDFAF /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */; };
 		187AAAD126EE3C1D00ABDFAF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAAD026EE3C1D00ABDFAF /* Files.swift */; };
 		187AAAD426EE3E6900ABDFAF /* CoateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */; };
+		1890BA7B2746CAB700E04A22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1890BA7A2746CAB700E04A22 /* Podfile */; };
+		1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7C2746CD3000E04A22 /* MapView.swift */; };
+		1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA7E2748FED400E04A22 /* MapViewModel.swift */; };
+		1890BA81274911DF00E04A22 /* DrugPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */; };
+		1890BA83274940D500E04A22 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890BA82274940D500E04A22 /* NetworkingManager.swift */; };
 		18AEC12D26E66E340024B7CE /* CoateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12C26E66E340024B7CE /* CoateData.swift */; };
 		18AEC12F26E66FEA0024B7CE /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC12E26E66FEA0024B7CE /* K.swift */; };
 		18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEC13326E67BF00024B7CE /* CoateView.swift */; };
@@ -44,6 +49,7 @@
 		18DEF75E26D3FF4900BA42F4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */; };
 		18DEF76026D4067D00BA42F4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF75F26D4067D00BA42F4 /* Layout.swift */; };
 		18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEF76226D415C500BA42F4 /* Binding+Extension.swift */; };
+		18EE216B2746407E00888104 /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE216A2746407E00888104 /* MyTabView.swift */; };
 		18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */; };
 		18FFB8BF27423CF7002CF6FB /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */; };
 		18FFB8C127425155002CF6FB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFB8C027425155002CF6FB /* DetailView.swift */; };
@@ -60,6 +66,11 @@
 		187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		187AAAD026EE3C1D00ABDFAF /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateViewModel.swift; sourceTree = "<group>"; };
+		1890BA7A2746CAB700E04A22 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		1890BA7C2746CD3000E04A22 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1890BA7E2748FED400E04A22 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlaceModel.swift; sourceTree = "<group>"; };
+		1890BA82274940D500E04A22 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		18AEC12C26E66E340024B7CE /* CoateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateData.swift; sourceTree = "<group>"; };
 		18AEC12E26E66FEA0024B7CE /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		18AEC13326E67BF00024B7CE /* CoateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoateView.swift; sourceTree = "<group>"; };
@@ -87,6 +98,7 @@
 		18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		18DEF75F26D4067D00BA42F4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		18DEF76226D415C500BA42F4 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		18EE216A2746407E00888104 /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
 		18F81F8E26E401CF0095A671 /* TextFieldArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldArrow.swift; sourceTree = "<group>"; };
 		18FFB8BE27423CF7002CF6FB /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		18FFB8C027425155002CF6FB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -108,10 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				187AAAD326EE3E6900ABDFAF /* CoateViewModel.swift */,
-				1807DAD02732DF72006073C2 /* NumberViewModel.swift */,
 				18CA0867274187F80097BE62 /* DownloadingDrugDetailViewModel.swift */,
 				18CA0849273D86D90097BE62 /* DownloadingDrugListViewModel.swift */,
 				18CA0854273DA7D70097BE62 /* ImageLoadingViewModel.swift */,
+				1890BA7E2748FED400E04A22 /* MapViewModel.swift */,
+				1807DAD02732DF72006073C2 /* NumberViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -125,30 +138,34 @@
 				1851720E2738271000BC3AD4 /* NumberModel.swift */,
 				185172062736D4A100BC3AD4 /* SuccessModel.swift */,
 				185172082736F47F00BC3AD4 /* UUIDModel.swift */,
+				1890BA80274911DF00E04A22 /* DrugPlaceModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		18AEC13526E67DF20024B7CE /* Helper */ = {
+		18AEC13526E67DF20024B7CE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				18AEC13626E67E060024B7CE /* Api.swift */,
+				1890BA82274940D500E04A22 /* NetworkingManager.swift */,
 				18CA08562740DC900097BE62 /* PhotoCacheManager.swift */,
 				18CA08582740DDA70097BE62 /* PhotoModelFileManager.swift */,
 				187AAAD026EE3C1D00ABDFAF /* Files.swift */,
 			);
-			name = Helper;
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		18D57FEA271865DD005C162D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18EE21692746406F00888104 /* TabView */,
 				18AEC13326E67BF00024B7CE /* CoateView.swift */,
 				18CA0850273DA22F0097BE62 /* DrugListRow.swift */,
 				18FFB8C027425155002CF6FB /* DetailView.swift */,
 				18CA0852273DA70B0097BE62 /* DownloadingImageView.swift */,
 				18CA0843273AD8EB0097BE62 /* FreewordView.swift */,
 				1851720A2737B1D000BC3AD4 /* HomeView.swift */,
+				1890BA7C2746CD3000E04A22 /* MapView.swift */,
 				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 			);
 			name = Views;
@@ -157,6 +174,7 @@
 		18D99F5E26CC09190012C3A1 = {
 			isa = PBXGroup;
 			children = (
+				1890BA7A2746CAB700E04A22 /* Podfile */,
 				18D99F6926CC09190012C3A1 /* OpenMedicine */,
 				18D99F6826CC09190012C3A1 /* Products */,
 			);
@@ -205,7 +223,7 @@
 				18AEC12B26E66E0E0024B7CE /* Models */,
 				187AAAD226EE3E3B00ABDFAF /* ViewModels */,
 				18D57FEA271865DD005C162D /* Views */,
-				18AEC13526E67DF20024B7CE /* Helper */,
+				18AEC13526E67DF20024B7CE /* Utility */,
 				18F81F8D26E401490095A671 /* Modifiers */,
 				18DEF76126D4156E00BA42F4 /* Extentions */,
 				18DEF75926D3F88400BA42F4 /* StartUpView.swift */,
@@ -226,6 +244,14 @@
 				18CA085A27411A040097BE62 /* String+Extension.swift */,
 			);
 			name = Extentions;
+			sourceTree = "<group>";
+		};
+		18EE21692746406F00888104 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				18EE216A2746407E00888104 /* MyTabView.swift */,
+			);
+			name = TabView;
 			sourceTree = "<group>";
 		};
 		18F81F8D26E401490095A671 /* Modifiers */ = {
@@ -304,6 +330,7 @@
 			files = (
 				18DEF75626D3F7B000BA42F4 /* Images.xcassets in Resources */,
 				18D99F7226CC091A0012C3A1 /* Preview Assets.xcassets in Resources */,
+				1890BA7B2746CAB700E04A22 /* Podfile in Resources */,
 				18D99F6F26CC091A0012C3A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CA0848273D857D0097BE62 /* DrugListModel.swift in Sources */,
+				1890BA83274940D500E04A22 /* NetworkingManager.swift in Sources */,
 				18FFB8C127425155002CF6FB /* DetailView.swift in Sources */,
 				18CA0853273DA70B0097BE62 /* DownloadingImageView.swift in Sources */,
 				18CA0844273AD8EB0097BE62 /* FreewordView.swift in Sources */,
@@ -330,7 +358,11 @@
 				18FFB8BF27423CF7002CF6FB /* Array+Extension.swift in Sources */,
 				18AEC13426E67BF00024B7CE /* CoateView.swift in Sources */,
 				1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */,
+				1890BA7D2746CD3000E04A22 /* MapView.swift in Sources */,
 				18AEC13726E67E060024B7CE /* Api.swift in Sources */,
+				1890BA81274911DF00E04A22 /* DrugPlaceModel.swift in Sources */,
+				1890BA7F2748FED400E04A22 /* MapViewModel.swift in Sources */,
+				18EE216B2746407E00888104 /* MyTabView.swift in Sources */,
 				185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */,
 				18CA086627416C2D0097BE62 /* DrugDetailModel.swift in Sources */,
 				18CA0855273DA7D70097BE62 /* ImageLoadingViewModel.swift in Sources */,
@@ -478,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenMedicine/Preview Content\"";
@@ -485,6 +518,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Используется для сканирования баркодов";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Приложение запрашивает локацию, чтобы предоставить информацию о ближайшей аптеке.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -510,6 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenMedicine/Preview Content\"";
@@ -517,6 +552,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Используется для сканирования баркодов";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Приложение запрашивает локацию, чтобы предоставить информацию о ближайшей аптеке.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
