@@ -25,6 +25,12 @@ class K {
         static let DRUG_LIST    = K.HOST_API + "/api/mobile/v1/drug-list"
         static let DRUG_DETAIL  = K.HOST_API + "/api/mobile/v1/drug/detail"
         static let PLACE_LIST   = K.HOST_API + "/api/mobile/v1/drugstore"
+        
+        // simple schedules
+        static let MNN_LIST     = K.HOST_API + "/api/mobile/v1/drug/mnn"
+        static let ATC_LIST     = K.HOST_API + "/api/mobile/v1/drug/atc"
+        static let FORM_LIST    = K.HOST_API + "/api/mobile/v1/drug/form"
+        static let COUNTRY_LIST = K.HOST_API + "/api/mobile/v1/drug/country"
     }
     
     class Source {
