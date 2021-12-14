@@ -13,6 +13,10 @@
 		1851720B2737B1D000BC3AD4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720A2737B1D000BC3AD4 /* HomeView.swift */; };
 		1851720D2737CD0000BC3AD4 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720C2737CD0000BC3AD4 /* ClearButton.swift */; };
 		1851720F2738271000BC3AD4 /* NumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720E2738271000BC3AD4 /* NumberModel.swift */; };
+		1869062A276914A1007F26F7 /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690629276914A1007F26F7 /* CountryModel.swift */; };
+		1869062C276917F3007F26F7 /* MnnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869062B276917F3007F26F7 /* MnnModel.swift */; };
+		1869062E27691874007F26F7 /* AtcModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869062D27691874007F26F7 /* AtcModel.swift */; };
+		18690630276918C8007F26F7 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869062F276918C8007F26F7 /* FormModel.swift */; };
 		187AAACD26EDD95F00ABDFAF /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAACC26EDD95F00ABDFAF /* View+Extension.swift */; };
 		187AAACF26EDD99F00ABDFAF /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */; };
 		187AAAD126EE3C1D00ABDFAF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AAAD026EE3C1D00ABDFAF /* Files.swift */; };
@@ -63,6 +67,10 @@
 		1851720A2737B1D000BC3AD4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1851720C2737CD0000BC3AD4 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		1851720E2738271000BC3AD4 /* NumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberModel.swift; sourceTree = "<group>"; };
+		18690629276914A1007F26F7 /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		1869062B276917F3007F26F7 /* MnnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnnModel.swift; sourceTree = "<group>"; };
+		1869062D27691874007F26F7 /* AtcModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtcModel.swift; sourceTree = "<group>"; };
+		1869062F276918C8007F26F7 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		187AAACC26EDD95F00ABDFAF /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		187AAACE26EDD99F00ABDFAF /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		187AAAD026EE3C1D00ABDFAF /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
@@ -135,6 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				18AEC12C26E66E340024B7CE /* CoateData.swift */,
+				1869062D27691874007F26F7 /* AtcModel.swift */,
+				18690629276914A1007F26F7 /* CountryModel.swift */,
+				1869062F276918C8007F26F7 /* FormModel.swift */,
+				1869062B276917F3007F26F7 /* MnnModel.swift */,
 				18CA086527416C2D0097BE62 /* DrugDetailModel.swift */,
 				18CA0847273D857D0097BE62 /* DrugListModel.swift */,
 				1851720E2738271000BC3AD4 /* NumberModel.swift */,
@@ -347,6 +359,7 @@
 			files = (
 				18CA0848273D857D0097BE62 /* DrugListModel.swift in Sources */,
 				1890BA83274940D500E04A22 /* NetworkingManager.swift in Sources */,
+				1869062A276914A1007F26F7 /* CountryModel.swift in Sources */,
 				18FFB8C127425155002CF6FB /* DetailView.swift in Sources */,
 				18CA0853273DA70B0097BE62 /* DownloadingImageView.swift in Sources */,
 				18CA0844273AD8EB0097BE62 /* FreewordView.swift in Sources */,
@@ -379,6 +392,9 @@
 				1807DAD12732DF72006073C2 /* NumberViewModel.swift in Sources */,
 				18DEF76326D415C500BA42F4 /* Binding+Extension.swift in Sources */,
 				1851720B2737B1D000BC3AD4 /* HomeView.swift in Sources */,
+				1869062C276917F3007F26F7 /* MnnModel.swift in Sources */,
+				1869062E27691874007F26F7 /* AtcModel.swift in Sources */,
+				18690630276918C8007F26F7 /* FormModel.swift in Sources */,
 				187AAAD426EE3E6900ABDFAF /* CoateViewModel.swift in Sources */,
 				18CA084A273D86D90097BE62 /* DownloadingDrugListViewModel.swift in Sources */,
 				1851720D2737CD0000BC3AD4 /* ClearButton.swift in Sources */,
