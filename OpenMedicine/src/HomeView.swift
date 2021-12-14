@@ -235,9 +235,7 @@ struct HomeView: View {
             
             Spacer()
             
-            Button(action: {
-                
-            }) {
+            NavigationLink(destination: SearchView()) {
                 VStack {
                     Image(systemName: "rectangle.and.text.magnifyingglass")
                         .resizable()
@@ -250,12 +248,12 @@ struct HomeView: View {
                         .foregroundColor(Color.black)
                 }
                 .frame(width: 160, height: 160)
+                .background(Color.white)
+                .cornerRadius(25)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 25).stroke(Color(.systemGray), lineWidth: 1)
+                )
             }
-            .background(Color.white)
-            .cornerRadius(25)
-            .overlay(
-                RoundedRectangle(cornerRadius: 25).stroke(Color(.systemGray), lineWidth: 1)
-            )
         }
         .font(.system(size: 17))
         .foregroundColor(blueColor)
