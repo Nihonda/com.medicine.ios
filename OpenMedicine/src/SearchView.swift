@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State var items: [SearchItem] = []
-    
-    @State var countryBinding: String = ""
-    @State var mnnBinding: String = ""
-    @State var formBinding: String = ""
-    @State var atcBinding: String = ""
+    @AppStorage("country") var countryBinding: String = ""
+    @AppStorage("mnn") var mnnBinding: String = ""
+    @AppStorage("form") var formBinding: String = ""
+    @AppStorage("atc") var atcBinding: String = ""
     
     @State var countryModal: Bool = false
     @State var mnnModal: Bool = false
@@ -28,10 +26,19 @@ struct SearchView: View {
             Spacer()
             totalSubview
             Spacer()
-            ForEach(items, id: \.id) { item in
-                item
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+            
+            List {
+                SearchItem(icon: "paperplane", label: "Страна производителя", modalType: .country, binding: $countryBinding, isPresented: $countryModal, handler: tapCountry)
+                    .listRowInsets(EdgeInsets())
+                SearchItem(icon: "number", label: "МНН", modalType: .mnn, binding: $mnnBinding, isPresented: $mnnModal, handler: tapMNN)
+                    .listRowInsets(EdgeInsets())
+                SearchItem(icon: "pills", label: "Лекарственная форма", modalType: .form, binding: $formBinding, isPresented: $formModal, handler: tapForm)
+                    .listRowInsets(EdgeInsets())
+                SearchItem(icon: "eye", label: "АТХ", modalType: .atc, binding: $atcBinding, isPresented: $atcModal, handler: tapATC)
+                    .listRowInsets(EdgeInsets())
             }
+            .listStyle(PlainListStyle())
+
             Spacer()
             Button {
                 
@@ -55,7 +62,7 @@ struct SearchView: View {
         }
         .padding(.horizontal)
         .onAppear {
-            initItems()
+
         }
     }
     
@@ -84,15 +91,6 @@ struct SearchView_Previews: PreviewProvider {
 }
 
 extension SearchView {
-    private func initItems() {
-        items = [
-            SearchItem(icon: "paperplane", label: "Страна производителя", modalType: .country, binding: $countryBinding, isPresented: $countryModal, handler: tapCountry),
-            SearchItem(icon: "number", label: "МНН", modalType: .mnn, binding: $mnnBinding, isPresented: $mnnModal, handler: tapMNN),
-            SearchItem(icon: "pills", label: "Лекарственная форма", modalType: .form, binding: $formBinding, isPresented: $formModal, handler: tapForm),
-            SearchItem(icon: "eye", label: "АТХ", modalType: .atc, binding: $atcBinding, isPresented: $atcModal, handler: tapATC),
-        ]
-    }
-    
     private func tapCountry() {
         
     }
