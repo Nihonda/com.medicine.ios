@@ -35,5 +35,10 @@ class K {
     
     class Source {
         static let COATE            = "coate.json"
+        
+        static let COUNTRY          = "country.json"
+        static let MNN              = "mnn.json"
+        static let FORM             = "form.json"
+        static let ATC              = "atc.json"
     }
 }
