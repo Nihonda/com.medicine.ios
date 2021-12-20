@@ -29,6 +29,21 @@ class DownloadingDrugListViewModel: ObservableObject {
         addSubscribers(isAppend: isAppend)
     }
     
+    func downloadData(param: [[String: String]] = [], page: Int? = nil, pageSize: Int = 20, isAppend: Bool = true) {
+        var params: [String] = []
+        for p in param {
+            for (key, value) in p {
+                params.append("\(key)=\(value)")
+            }
+        }
+        if let page = page {
+            params.append("page=\(page)")
+        }
+        params.append("step=\(pageSize)")
+        dataService.downloadDrugListData(params.joined(separator: "&"), isAppend: isAppend)
+        addSubscribers(isAppend: isAppend)
+    }
+    
     func addSubscribers(isAppend: Bool) {
         dataService.$drugListItems
             .sink { [weak self] (returnedDrugListItems) in

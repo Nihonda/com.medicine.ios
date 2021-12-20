@@ -11,12 +11,13 @@ import Combine
 class NumberViewModel: ObservableObject {
     
     @Published var numberModel: NumberModel?
+    @Published var params: [[String: String]] = []
+    
     var cancellables = Set<AnyCancellable>()
     
     let dataService = Api.shared
     
     init() {
-        dataService.downloadNumberData()
         addUser()
     }
     
@@ -26,5 +27,13 @@ class NumberViewModel: ObservableObject {
                 self?.numberModel = returnedNumberModel
             }
             .store(in: &cancellables)
+    }
+    
+    func update(with params: [[String: String]]) {
+        dataService.downloadNumberData(param: params)
+    }
+    
+    func update() {
+        dataService.downloadNumberData(param: params)
     }
 }

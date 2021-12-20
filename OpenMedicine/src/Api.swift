@@ -53,8 +53,15 @@ class Api {
     }
     
     // FROM https://www.youtube.com/watch?v=fmVuOu8XOvQ&list=PLwvDm4VfkdpiagxAXCT33Rkwnc5IVhTar&index=29
-    func downloadNumberData() {
-        guard let url = URL(string: K.API.NUMBER_TOTAL) else { return }
+    func downloadNumberData(param: [[String: String]] = []) {
+        var params: [String] = []
+        for p in param {
+            for (key, value) in p {
+                params.append("\(key)=\(value)")
+            }
+        }
+        let urlStr = [K.API.NUMBER_TOTAL, params.joined(separator: "&")].joined(separator: "?").encodeUrl
+        guard let url = URL(string: urlStr) else { return }
         
         numberSubscription = NetworkingManager.download(url: url)
             .decode(type: NumberModel.self, decoder: JSONDecoder())
