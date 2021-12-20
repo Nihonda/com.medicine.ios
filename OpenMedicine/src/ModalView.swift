@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ModalView: View {
+    @EnvironmentObject var numberVM: NumberViewModel
+
     @Binding var presentedAsModal: Bool
 
     @AppStorage("country") var countryBinding: String = ""
@@ -32,7 +34,7 @@ struct ModalView: View {
                     HStack(spacing: 20) {
                         Image(systemName: "checkmark.square")
                             .onTapGesture {
-                                onClick(text: "\(model.id) - \(model.name)")
+                                onClick(model: model)
                                 withAnimation(.easeInOut(duration: 0.5)) {
                                     self.presentedAsModal = false
                                 }
@@ -154,17 +156,23 @@ extension ModalView {
         }
     }
     
-    private func onClick(text: String) {
+    private func onClick(model: TextModel) {
         switch modalType {
         case .country:
-            countryBinding = text
+            countryBinding = "\(model.id) - \(model.name)"
+            numberVM.params.append(["country[]": "\(model.id)"])
         case .mnn:
-            mnnBinding = text
+            mnnBinding = "\(model.id) - \(model.name)"
+            numberVM.params.append(["mnn[]": "\(model.id)"])
         case .form:
-            formBinding = text
+            formBinding = "\(model.id) - \(model.name)"
+            numberVM.params.append(["medicine_form[]": "\(model.id)"])
         case .atc:
-            atcBinding = text
+            atcBinding = "\(model.id) - \(model.name)"
+            numberVM.params.append(["atc[]": "\(model.id)"])
         }
+        
+        numberVM.update()
     }
     
     private func fetchItems<T: Codable>(type: T.Type) {
