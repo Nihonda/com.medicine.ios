@@ -13,6 +13,8 @@ struct SearchView: View {
     @AppStorage("form") var formBinding: String = ""
     @AppStorage("atc") var atcBinding: String = ""
     
+    @StateObject var numberVM = NumberViewModel()
+    
     @State var countryModal: Bool = false
     @State var mnnModal: Bool = false
     @State var formModal: Bool = false
@@ -24,7 +26,9 @@ struct SearchView: View {
     var body: some View {
         VStack(spacing: 10) {
             Spacer()
+            
             totalSubview
+            
             Spacer()
             
             List {
@@ -40,9 +44,8 @@ struct SearchView: View {
             .listStyle(PlainListStyle())
 
             Spacer()
-            Button {
-                
-            } label: {
+            
+            NavigationLink(destination: ResultList()) {
                 Text("ПОИСК")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(.systemBackground))
@@ -61,16 +64,17 @@ struct SearchView: View {
             Spacer()
         }
         .padding(.horizontal)
-        .onAppear {
-
+        .onLoad {
+            numberVM.update(with: [])
         }
+        .environmentObject(numberVM)
     }
     
     private var totalSubview: some View {
         HStack() {
             Text("Найдено: ")
                 .font(.system(size: 30))
-            Text("5300")
+            Text("\(numberVM.numberModel?.numOf.count ?? 0)")
                 .font(.system(size: 40))
                 .foregroundColor(blueColor)
                 .padding(.trailing, 5)
