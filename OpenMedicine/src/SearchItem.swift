@@ -17,30 +17,47 @@ struct SearchItem: View {
 //    let handler: (Binding<String>) -> ()
     let handler: () -> ()
     
+    @State private var frame = CGRect.zero
+    
     var body: some View {
-        HStack(spacing: 10) {
-            Image(systemName: icon)
-            TextField(label, text: $binding)
-                .font(.title3)
-                .lineLimit(2)
-                .foregroundColor(Color.primary)
+        VStack {
+            HStack(spacing: 10) {
+                Image(systemName: icon)
+                
+                ZStack(alignment: .leading) {
+                    if binding.isEmpty {
+                        Text(label)
+                            .foregroundColor(Color.gray)
+                            .zIndex(1)
+                    }
+                    TextEditor(text: $binding)
+                }
+                
+                Spacer()
+                
+                Image(systemName: binding.isEmpty ? "chevron.right" : "delete.left")
+                    .foregroundColor(binding.isEmpty ? .blue : Color(UIColor.opaqueSeparator))
+                    .onTapGesture {
+                        if binding.isEmpty {
+                            handler()
+                            isPresented = true
+                        } else {
+                            binding = ""
+                        }
+                    }
+            }
+            .padding()
+            .foregroundColor(.blue)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10.0)
+                    .strokeBorder(Color(uiColor: UIColor.systemGray3), style: StrokeStyle(lineWidth: 0.5))
+            )
+            .background(RoundedRectangle(cornerRadius: 10.0).fill(Color(.systemBackground)))
             
             Spacer()
-            
-            Image(systemName: "chevron.right")
+                .frame(height: 20)
         }
-        .padding()
-        .foregroundColor(.blue)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10.0)
-                .strokeBorder(Color(uiColor: UIColor.systemGray3), style: StrokeStyle(lineWidth: 0.5))
-        )
-        .background(RoundedRectangle(cornerRadius: 10.0).fill(Color(.systemBackground)))
         .sheet(isPresented: $isPresented) { ModalView(presentedAsModal: self.$isPresented, modalType: modalType) }
-        .onTapGesture {
-            handler()
-            isPresented = true
-        }
     }
 }
 
