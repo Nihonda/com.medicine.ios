@@ -13,7 +13,7 @@ struct SearchView: View {
     @AppStorage("form") var formBinding: String = ""
     @AppStorage("atc") var atcBinding: String = ""
     
-    @StateObject var numberVM = NumberViewModel()
+    @EnvironmentObject var numberVM: NumberViewModel
     
     @State var countryModal: Bool = false
     @State var mnnModal: Bool = false
@@ -65,7 +65,7 @@ struct SearchView: View {
         }
         .padding(.horizontal)
         .onLoad {
-            numberVM.update(with: [])
+            numberVM.update()
         }
         .environmentObject(numberVM)
     }

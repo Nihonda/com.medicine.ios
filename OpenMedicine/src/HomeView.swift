@@ -238,7 +238,7 @@ struct HomeView: View {
             
             Spacer()
             
-            NavigationLink(destination: SearchView()) {
+            NavigationLink(destination: SearchView().environmentObject(numberVM)) {
                 VStack {
                     Image(systemName: "rectangle.and.text.magnifyingglass")
                         .resizable()
