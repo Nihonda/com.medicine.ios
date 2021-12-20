@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SearchItem: View {
+    @EnvironmentObject var numberVM: NumberViewModel
+    
     let id: String = UUID().uuidString
     let icon: String
     let label: String
@@ -43,6 +45,7 @@ struct SearchItem: View {
                             isPresented = true
                         } else {
                             binding = ""
+                            drop(modalType: modalType)
                         }
                     }
             }
@@ -65,6 +68,25 @@ struct SearchItem_Previews: PreviewProvider {
     static var previews: some View {
         SearchItem(icon: "number", label: "Страна производителя", modalType: .country, binding: .constant("Test text"), isPresented: .constant(false)) {
         }
+        .environmentObject(NumberViewModel())
         .previewLayout(.sizeThatFits)
+    }
+}
+
+// MARK: PRIVATE FUNCTIONS
+extension SearchItem {
+    private func drop(modalType: ModalType) {
+        switch modalType {
+        case .country:            
+            numberVM.params = numberVM.params.filter { $0["country[]"] == nil }
+        case .mnn:
+            numberVM.params = numberVM.params.filter { $0["mnn[]"] == nil }
+        case .form:
+            numberVM.params = numberVM.params.filter { $0["medicine_form[]"] == nil }
+        case .atc:
+            numberVM.params = numberVM.params.filter { $0["atc[]"] == nil }
+        }
+        
+        numberVM.update()
     }
 }
