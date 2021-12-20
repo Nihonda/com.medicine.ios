@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1807DAD12732DF72006073C2 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807DAD02732DF72006073C2 /* NumberViewModel.swift */; };
+		1831CFB827702734002DF0A9 /* ResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831CFB727702734002DF0A9 /* ResultList.swift */; };
 		185172072736D4A100BC3AD4 /* SuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185172062736D4A100BC3AD4 /* SuccessModel.swift */; };
 		185172092736F47F00BC3AD4 /* UUIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185172082736F47F00BC3AD4 /* UUIDModel.swift */; };
 		1851720B2737B1D000BC3AD4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720A2737B1D000BC3AD4 /* HomeView.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		1807DAD02732DF72006073C2 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
+		1831CFB727702734002DF0A9 /* ResultList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultList.swift; sourceTree = "<group>"; };
 		185172062736D4A100BC3AD4 /* SuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModel.swift; sourceTree = "<group>"; };
 		185172082736F47F00BC3AD4 /* UUIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDModel.swift; sourceTree = "<group>"; };
 		1851720A2737B1D000BC3AD4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				18DEF75D26D3FF4900BA42F4 /* RegistrationView.swift */,
 				18E791DB276ECE2C00A166C9 /* ModalView */,
 				18E791D5276ECD3F00A166C9 /* SearchView */,
+				1831CFB727702734002DF0A9 /* ResultList.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				185172092736F47F00BC3AD4 /* UUIDModel.swift in Sources */,
 				18CA0851273DA22F0097BE62 /* DrugListRow.swift in Sources */,
 				18E791DD276ECE4900A166C9 /* ModalView.swift in Sources */,
+				1831CFB827702734002DF0A9 /* ResultList.swift in Sources */,
 				18F81F8F26E401CF0095A671 /* TextFieldArrow.swift in Sources */,
 				18CA084F273D94730097BE62 /* Optional+Extension.swift in Sources */,
 			);
