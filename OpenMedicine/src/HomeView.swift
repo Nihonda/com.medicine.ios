@@ -96,6 +96,9 @@ struct HomeView: View {
             
             Button(action: {}, label: {Text("Нет")})
         }
+        .onAppear {
+            numberVM.update(with: [])
+        }
     }
     
     private var titleSubview: some View {
