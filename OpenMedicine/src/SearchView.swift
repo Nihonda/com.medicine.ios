@@ -45,7 +45,7 @@ struct SearchView: View {
 
             Spacer()
             
-            NavigationLink(destination: ResultList()) {
+            NavigationLink(destination: ResultList().environmentObject(numberVM)) {
                 Text("ПОИСК")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(.systemBackground))

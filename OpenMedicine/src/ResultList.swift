@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ResultList: View {
     @StateObject var vm = DownloadingDrugListViewModel()
+    @EnvironmentObject var numberVM: NumberViewModel
     
     @State private var freewordBinding = ""
     @State private var currentPage: Int = 0
@@ -27,7 +28,7 @@ struct ResultList: View {
                                 print(index)
                                 if vm.shouldLoadData(id: index) {
                                     currentPage += 1
-                                    vm.downloadData(freeword: freewordBinding, page: currentPage)
+                                    vm.downloadData(param: numberVM.params, page: currentPage, isAppend: true)
                                 }
                             }
                     }
@@ -35,11 +36,15 @@ struct ResultList: View {
             }
             .listRowBackground(Color(.secondarySystemBackground))
         }
+        .onAppear {
+            vm.downloadData(param: numberVM.params, isAppend: false)
+        }
     }
 }
 
 struct ResultList_Previews: PreviewProvider {
     static var previews: some View {
         ResultList()
+            .environmentObject(NumberViewModel())
     }
 }
